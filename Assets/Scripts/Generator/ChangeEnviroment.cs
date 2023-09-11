@@ -15,24 +15,22 @@ public class ChangeEnviroment : MonoBehaviour
     private void Start()
     {
         GameEnviroment = 1;
-        changeCamera();
+        ChangeCamera();
     }
-    public void changeEnvi(int numb)
+    public void ChangeEnvironmentFunction(int numb)
     {
         GameEnviroment = numb;
-        changeCamera();
+        ChangeCamera();
     }
-    private void changeCamera()
+    private void ChangeCamera()
     {
         if (GameEnviroment == 1)
         {
-
             _Camera.transform.DOMove(new Vector3(0, 4.1f, -8.5f), 1f);
             _Camera.transform.DORotate(new Vector3(5.02f, 0, 0), 1f);
         }
         else if (GameEnviroment == 2)
         {
-
             _Camera.transform.DOMove(new Vector3(0, -1.9f, -10.13f), 1f);
             _Camera.transform.DORotate(new Vector3(17.13f, 0, 0), 1f);
         }

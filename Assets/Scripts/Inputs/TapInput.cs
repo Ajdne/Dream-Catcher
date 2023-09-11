@@ -10,6 +10,7 @@ public class TapInput : MonoBehaviour
     private CharacterController characterController;
     private int desiredLane = 1; //0 = left, 1 = middle, 2= right
     private float speed = 7.0f;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -63,4 +64,14 @@ public class TapInput : MonoBehaviour
                 desiredLane = 2;
         }*/
     }
+
+    public void MoveLaneLeft()
+    {
+        MoveLane(false);
+    }
+    public void MoveLaneRight()
+    {
+        MoveLane(true);
+    }
+
 }
