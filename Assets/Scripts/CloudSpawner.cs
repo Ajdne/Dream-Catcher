@@ -38,7 +38,7 @@ public class CloudSpawner : MonoBehaviour
             GameObject newCloud = Instantiate(selectedCloudPrefab, spawnPosition, Quaternion.identity);
             spawnedClouds.Add(newCloud);
 
-            // Set up a timer for despawning
+            // Despawn timer
             StartCoroutine(DespawnCloud(newCloud));
 
             yield return new WaitForSeconds(spawnInterval);
