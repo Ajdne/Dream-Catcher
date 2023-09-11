@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    public static LevelGenerator Instance;
     [SerializeField]
     private List<GameObject> objectList = new List<GameObject>();
     [SerializeField]
@@ -31,6 +32,7 @@ public class LevelGenerator : MonoBehaviour
     }
     private void Awake()
     {
+        Instance = this;
         gameSpeed = 5f;
     }
     private void Start()
@@ -44,6 +46,15 @@ public class LevelGenerator : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(2);
             gameSpeed += 0.5f;
+            if (gameSpeed > 20f)
+            {
+                ChangeEnviroment.Instance.changeEnvi(1);
+                continue;
+            }
+            if (gameSpeed > 10f)
+            {
+                ChangeEnviroment.Instance.changeEnvi(2);
+            }
         }
     }
 
