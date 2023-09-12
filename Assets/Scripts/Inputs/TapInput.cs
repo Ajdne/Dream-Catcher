@@ -19,7 +19,7 @@ public class TapInput : MonoBehaviour
     void Update()
     {
         //gather the inputs on which lane we should be
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        /*if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
             //move left
             MoveLane(false);
@@ -28,7 +28,7 @@ public class TapInput : MonoBehaviour
         { 
             //move right
             MoveLane(true);
-        }
+        }*/
 
         // calculate where we should be in the future
         Vector3 targetPosition = transform.position.z * Vector3.forward;

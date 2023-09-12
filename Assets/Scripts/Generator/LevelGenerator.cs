@@ -48,16 +48,17 @@ public class LevelGenerator : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(2);
             gameSpeed += 0.5f;
-            if (gameSpeed > 20f)
-            {
-                ChangeEnviroment.Instance.ChangeEnvironmentFunction(1);
-                continue;
-            }
-            if (gameSpeed > 10f)
-            {
-                ChangeEnviroment.Instance.ChangeEnvironmentFunction(2);
-            }
         }
     }
-
+    private void Update()
+    {
+        if (gameSpeed > 10f && gameSpeed < 20f && ChangeEnviroment.GameEnviroment != 2)
+        {
+            ChangeEnviroment.Instance.ChangeEnvironmentFunction(2);
+        }
+        if (gameSpeed > 20f && gameSpeed < 30f && ChangeEnviroment.GameEnviroment != 1)
+        {
+            ChangeEnviroment.Instance.ChangeEnvironmentFunction(1);
+        }
+    }
 }

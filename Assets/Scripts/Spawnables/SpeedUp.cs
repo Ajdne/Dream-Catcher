@@ -13,8 +13,8 @@ public class SpeedUp : MonoBehaviour
     }
     IEnumerator DoubleSpeed()
     {
-        Time.timeScale = 2f;
+        Time.timeScale += 1;
         yield return new WaitForSecondsRealtime(5);
-        Time.timeScale = 1f;
+        Time.timeScale -= 1;
     }
 }
