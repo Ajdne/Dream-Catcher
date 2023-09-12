@@ -4,7 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Cloud
+=======
+  - Pink
+  - White
+  - Black
+  - Obstacle
+>>>>>>> ControlSetup
   layers:
   - Default
   - TransparentFX
