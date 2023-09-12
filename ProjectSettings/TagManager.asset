@@ -4,10 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Pink
-  - White
-  - Black
-  - Obstacle
+  - Cloud
   layers:
   - Default
   - TransparentFX
