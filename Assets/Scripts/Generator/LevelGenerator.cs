@@ -28,7 +28,7 @@ public class LevelGenerator : MonoBehaviour
                 rand2 = Random.Range(3, spawnPositions.Count);
             }
             int rand = Random.Range(0, spawnableObjects.Count);
-            yield return new WaitForSecondsRealtime(2);
+            yield return new WaitForSeconds(3);
             GameObject spawnedObject = Instantiate(spawnableObjects[rand], spawnPositions[rand2], Quaternion.Euler(0f, 180f, 0f));
         }
     }

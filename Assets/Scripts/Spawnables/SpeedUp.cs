@@ -8,9 +8,11 @@ public class SpeedUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(Player.Instance.DoubleSpeed());
+            if(Time.timeScale <= 2)
+            {
+                Time.timeScale += 1;
+            }
             gameObject.SetActive(false);
         }
     }
-
 }

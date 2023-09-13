@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
     [SerializeField]
     private TMP_Text PlayerHealth;
     [SerializeField]
@@ -14,6 +15,10 @@ public class UIManager : MonoBehaviour
     private TMP_Text GameSpeedScale;
     [SerializeField]
     private TMP_Text GameSpeed;
+    private void Awake()
+    {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +49,17 @@ public class UIManager : MonoBehaviour
         transform.Find("InGameUI").gameObject.SetActive(true);
         transform.Find("GamePausePanel").gameObject.SetActive(false);
         Time.timeScale = lastTimeScale;
+    }
+    public void Settings()
+    {
+        transform.Find("InGameUI").gameObject.SetActive(false);
+        transform.Find("GamePausePanel").gameObject.SetActive(false);
+        transform.Find("SettingsPanel").gameObject.SetActive(true);
+    }
+    public void SettingsBackButton()
+    {
+        transform.Find("SettingsPanel").gameObject.SetActive(false);
+        transform.Find("GamePausePanel").gameObject.SetActive(true);
     }
 
 }

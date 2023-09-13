@@ -10,12 +10,12 @@ public class ChangeEnviroment : MonoBehaviour
     private Camera _Camera;
     private void Awake()
     {
+        GameEnviroment = 1;
         Instance = this;
     }
     private void Start()
     {
-        GameEnviroment = 1;
-        ChangeCamera();
+        //ChangeCamera();
     }
     public void ChangeEnvironmentFunction(int numb)
     {
