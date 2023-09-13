@@ -12,4 +12,10 @@ public class Player : MonoBehaviour
         Instance = this;
         Health = 3;
     }
+    public IEnumerator DoubleSpeed()
+    {
+        Time.timeScale += 1;
+        yield return new WaitForSecondsRealtime(5);
+        Time.timeScale -= 1;
+    }
 }

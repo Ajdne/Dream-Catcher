@@ -8,7 +8,9 @@ public class HealthDown : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+
             Player.Instance.Health -= 1;
+            gameObject.SetActive(false);
         }
     }
 }

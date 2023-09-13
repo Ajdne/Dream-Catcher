@@ -8,7 +8,9 @@ public class ScoreUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+
             Player.Instance.Score += 1;
+            gameObject.SetActive(false);
         }
     }
 }

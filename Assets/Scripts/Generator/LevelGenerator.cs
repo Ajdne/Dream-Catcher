@@ -29,7 +29,7 @@ public class LevelGenerator : MonoBehaviour
             }
             int rand = Random.Range(0, spawnableObjects.Count);
             yield return new WaitForSecondsRealtime(2);
-            GameObject spawnedObject = Instantiate(spawnableObjects[rand], spawnPositions[rand2], Quaternion.identity);
+            GameObject spawnedObject = Instantiate(spawnableObjects[rand], spawnPositions[rand2], Quaternion.Euler(0f, 180f, 0f));
         }
     }
     private void Awake()
@@ -52,6 +52,7 @@ public class LevelGenerator : MonoBehaviour
     }
     private void Update()
     {
+        /*
         if (gameSpeed > 10f && gameSpeed < 20f && ChangeEnviroment.GameEnviroment != 2)
         {
             ChangeEnviroment.Instance.ChangeEnvironmentFunction(2);
@@ -60,5 +61,6 @@ public class LevelGenerator : MonoBehaviour
         {
             ChangeEnviroment.Instance.ChangeEnvironmentFunction(1);
         }
+        */
     }
 }

@@ -8,13 +8,9 @@ public class SpeedUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(DoubleSpeed());
+            StartCoroutine(Player.Instance.DoubleSpeed());
+            gameObject.SetActive(false);
         }
     }
-    IEnumerator DoubleSpeed()
-    {
-        Time.timeScale += 1;
-        yield return new WaitForSecondsRealtime(5);
-        Time.timeScale -= 1;
-    }
+
 }
