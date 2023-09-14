@@ -14,6 +14,6 @@ public class CameraMotor : MonoBehaviour
     private void Update()
     {
         Vector3 desiredPosition = lookAt.position + offset;
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime*5);
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime*3);
     }
 }

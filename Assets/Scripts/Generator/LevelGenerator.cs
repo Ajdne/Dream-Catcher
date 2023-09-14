@@ -13,12 +13,24 @@ public class LevelGenerator : MonoBehaviour
     private List<Vector3> spawnPositions = new List<Vector3>();
 
     public static float gameSpeed;
-
+    public ObjectPooler theObjectPool;
+    public bool spawn;
+    private Vector3 startPos = new(0f, -0.5f, 450f);
     IEnumerator Generator()
     {
         while (true)
         {
-            int rand2;
+            yield return null;
+            if (spawn)
+            {
+                GameObject spawnedObject = theObjectPool.GetPooledObject();
+
+                spawnedObject.transform.position = startPos;
+                spawnedObject.transform.rotation = Quaternion.identity;
+                spawnedObject.SetActive(true);
+                spawn = false;
+            }
+            /*int rand2;
             if (ChangeEnviroment.GameEnviroment == 1)
             {
                 rand2 = Random.Range(0, 3);
@@ -27,15 +39,23 @@ public class LevelGenerator : MonoBehaviour
             {
                 rand2 = Random.Range(3, spawnPositions.Count);
             }
-            int rand = Random.Range(0, spawnableObjects.Count);
-            yield return new WaitForSeconds(3);
-            GameObject spawnedObject = Instantiate(spawnableObjects[rand], spawnPositions[rand2], Quaternion.Euler(0f, 180f, 0f));
+            int rand = Random.Range(0, spawnableObjects.Count);*/
+
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Environment"))
+        {
+            spawn = true;
+            other.GetComponent<BoxCollider>().enabled = false;
         }
     }
     private void Awake()
     {
         Instance = this;
-        gameSpeed = 5f;
+        gameSpeed = 7f;
+        spawn = false;
     }
     private void Start()
     {
@@ -49,18 +69,5 @@ public class LevelGenerator : MonoBehaviour
             yield return new WaitForSecondsRealtime(2);
             gameSpeed += 0.5f;
         }
-    }
-    private void Update()
-    {
-        /*
-        if (gameSpeed > 10f && gameSpeed < 20f && ChangeEnviroment.GameEnviroment != 2)
-        {
-            ChangeEnviroment.Instance.ChangeEnvironmentFunction(2);
-        }
-        if (gameSpeed > 20f && gameSpeed < 30f && ChangeEnviroment.GameEnviroment != 1)
-        {
-            ChangeEnviroment.Instance.ChangeEnvironmentFunction(1);
-        }
-        */
     }
 }

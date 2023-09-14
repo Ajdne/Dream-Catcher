@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9176680770449322658}
   - component: {fileID: 2313748306571509282}
-  - component: {fileID: -5857054170235676163}
+  - component: {fileID: -6994437259625416509}
   m_Layer: 0
   m_Name: Countryside0
   m_TagString: Environment
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0912297fae1e36c48a728f79edea6467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &-5857054170235676163
+--- !u!65 &-6994437259625416509
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,8 +66,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 100, y: 50, z: 147.90451}
-  m_Center: {x: 0, y: 0, z: 59.93807}
+  m_Size: {x: 100, y: 50, z: 150}
+  m_Center: {x: 0, y: 0, z: 60}
 --- !u!1 &2032128663800934063
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,8 +41,8 @@ public class TapInput : MonoBehaviour
         Vector3 moveVector = Vector3.zero;
             //moveVector.x = (targetPosition - transform.position).normalized.x * speed;
         moveVector.x = (targetPosition - transform.position).x * speed;
-            //moveVector.y = 0f;
-            //moveVector.z = 0f;
+            moveVector.y = 0f;
+            moveVector.z = 0f;
 
         //move player
         characterController.Move(moveVector * Time.deltaTime);
