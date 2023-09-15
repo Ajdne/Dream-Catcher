@@ -10,7 +10,7 @@ public class SpeedUp : MonoBehaviour
         {
             if(Time.timeScale <= 2)
             {
-                Time.timeScale += 1;
+                Time.timeScale += 0.5f;
             }
             gameObject.SetActive(false);
         }

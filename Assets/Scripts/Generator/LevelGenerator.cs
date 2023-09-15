@@ -8,17 +8,16 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private List<GameObject> spawnableObjects = new List<GameObject>();
     [SerializeField]
-    private List<GameObject> environmentObjects = new List<GameObject>();
-    [SerializeField]
     private List<Vector3> spawnPositions = new List<Vector3>();
 
     public static float gameSpeed;
     public ObjectPooler theObjectPool;
     public bool spawn;
+    public bool IsAlive;
     private Vector3 startPos = new(0f, -0.5f, 450f);
-    IEnumerator Generator()
+    IEnumerator EnvironmentGenerator()
     {
-        while (true)
+        while (IsAlive)
         {
             yield return null;
             if (spawn)
@@ -30,7 +29,13 @@ public class LevelGenerator : MonoBehaviour
                 spawnedObject.SetActive(true);
                 spawn = false;
             }
-            /*int rand2;
+        }
+    }
+    IEnumerator SpawnablesGenerator()
+    {
+        while(IsAlive)
+        {
+            int rand2;
             if (ChangeEnviroment.GameEnviroment == 1)
             {
                 rand2 = Random.Range(0, 3);
@@ -39,8 +44,9 @@ public class LevelGenerator : MonoBehaviour
             {
                 rand2 = Random.Range(3, spawnPositions.Count);
             }
-            int rand = Random.Range(0, spawnableObjects.Count);*/
-
+            int rand = Random.Range(0, spawnableObjects.Count);
+            Instantiate(spawnableObjects[rand], spawnPositions[rand2], Quaternion.Euler(0,180f,0));
+            yield return new WaitForSecondsRealtime(3);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -56,15 +62,18 @@ public class LevelGenerator : MonoBehaviour
         Instance = this;
         gameSpeed = 7f;
         spawn = false;
+        IsAlive = false;
     }
-    private void Start()
+    public void StartGame()
     {
-        StartCoroutine(Generator());
+        IsAlive = true;
+        StartCoroutine(EnvironmentGenerator());
+        StartCoroutine(SpawnablesGenerator());
         StartCoroutine(GameSpeedUpdate());
     }
     IEnumerator GameSpeedUpdate()
     {
-        while(true)
+        while(IsAlive)
         {
             yield return new WaitForSecondsRealtime(2);
             gameSpeed += 0.5f;

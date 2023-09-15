@@ -18,20 +18,9 @@ public class TapInput : MonoBehaviour
     
     void Update()
     {
-        //gather the inputs on which lane we should be
-        /*if(Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            //move left
-            MoveLane(false);
-        }
-        if(Input.GetKeyDown(KeyCode.RightArrow))
-        { 
-            //move right
-            MoveLane(true);
-        }*/
 
         // calculate where we should be in the future
-        Vector3 targetPosition = transform.position.z * Vector3.forward;
+        Vector3 targetPosition = Vector3.zero;
         if(desiredLane == 0)
             targetPosition += Vector3.left * LANE_DISTANCE;
         else if(desiredLane == 2)
@@ -41,28 +30,16 @@ public class TapInput : MonoBehaviour
         Vector3 moveVector = Vector3.zero;
             //moveVector.x = (targetPosition - transform.position).normalized.x * speed;
         moveVector.x = (targetPosition - transform.position).x * speed;
-            moveVector.y = 0f;
-            moveVector.z = 0f;
-
+        moveVector.y = 0;
+        moveVector.z = 0;
         //move player
         characterController.Move(moveVector * Time.deltaTime);
     }
     private void MoveLane(bool goingRight)
     {
+        //gather the inputs on which lane we should be
         desiredLane += (goingRight) ? 1 : -1;
         desiredLane = Mathf.Clamp(desiredLane, 0, 2);
-        /*if(!goingRight)
-        {
-            desiredLane--;
-            if(desiredLane == -1)
-                desiredLane = 0;
-        }
-        else
-        {
-            desiredLane++;
-            if (desiredLane == 3)
-                desiredLane = 2;
-        }*/
     }
 
     public void MoveLaneLeft()
