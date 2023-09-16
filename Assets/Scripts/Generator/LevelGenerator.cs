@@ -16,10 +16,15 @@ public class LevelGenerator : MonoBehaviour
     public bool IsAlive;
     private Vector3 startPos = new(0f, -0.5f, 450f);
 
-
+    public static int EnvironmentCounter;
 
     IEnumerator EnvironmentGenerator()
     {
+        // stvara platforme, kad dobije znak stvara na platformi transition objekat
+        // znak za transition objekat je broj na sa countera,
+        // counter moze da bude broj koji ce da se povecava nakon svake platforme ili samo time brojac
+        // transition objekat poziva funkciju koja ima dve opcije
+        // 
         while (IsAlive)
         {
             yield return null;
@@ -31,6 +36,7 @@ public class LevelGenerator : MonoBehaviour
                 spawnedObject.transform.rotation = Quaternion.identity;
                 spawnedObject.SetActive(true);
                 spawn = false;
+                EnvironmentCounter++;
             }
         }
     }

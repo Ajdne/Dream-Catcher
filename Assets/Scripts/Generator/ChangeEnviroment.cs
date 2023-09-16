@@ -42,16 +42,6 @@ public class ChangeEnviroment : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        Debug.Log("Kurac");
-        if (other.CompareTag("Environment"))
-        {
-            numb++;
-            isVertical = true;
-        }
-    }
-
     public int numb;
     public bool isVertical;
 

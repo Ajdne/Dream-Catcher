@@ -28,4 +28,12 @@ public class EnvironmentMover : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(LevelGenerator.Instance.numb >= 5)
+        {
+
+        }
+    }
 }
