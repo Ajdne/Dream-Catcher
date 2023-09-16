@@ -35,13 +35,11 @@ public class ChangeEnviroment : MonoBehaviour
     {
         if (GameEnviroment != 7)
         {
-            _Camera.transform.DOMove(new Vector3(0, 4.1f, -8.5f), 1f);
-            _Camera.transform.DORotate(new Vector3(5.02f, 0, 0), 1f);
+            CameraMotor.Instance.offset = new(0, 5f, -10f);
         }
         else if (GameEnviroment == 7)
         {
-            _Camera.transform.DOMove(new Vector3(0, -1.9f, -10.13f), 1f);
-            _Camera.transform.DORotate(new Vector3(17.13f, 0, 0), 1f);
+            CameraMotor.Instance.offset = new (0, -3f, -10f);
         }
     }
 }

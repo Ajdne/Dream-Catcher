@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
 {
+    public static ObjectPooler Instance;
     //public GameObject pooledObject;
     public List<GameObject> pooledObjects;
     /*
@@ -18,7 +19,10 @@ public class ObjectPooler : MonoBehaviour
     public int pooledAmount;
 
     Dictionary<int, GameObject> pooledEnvironments;
-
+    private void Awake()
+    {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -114,9 +118,9 @@ public class ObjectPooler : MonoBehaviour
     }
     public void TurnOffEnvironment()
     {
-        for(int i = 0; i < pooledObjects.Count; i++)
+        foreach(KeyValuePair<int, GameObject> kvp in  pooledEnvironments)
         {
-            pooledEnvironments[i].SetActive(false);
+            kvp.Value.SetActive(false);
         }
     }
 }

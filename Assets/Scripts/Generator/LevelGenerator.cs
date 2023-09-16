@@ -35,7 +35,7 @@ public class LevelGenerator : MonoBehaviour
     }
 
     private int numb;
-    public bool isVertical;
+    public bool isVertical = true;
 
     IEnumerator EnvironmentController()
     {
@@ -46,6 +46,7 @@ public class LevelGenerator : MonoBehaviour
                 numb = 0;
                 if (isVertical)
                 {
+                    ObjectPooler.Instance.TurnOffEnvironment();
                     ChangeEnviroment.Instance.ChangeEnvironmentFunction(7);
                     isVertical = false;
                 }
@@ -64,7 +65,6 @@ public class LevelGenerator : MonoBehaviour
         // promeni se u nebo
         // promeni na novi envi (numb)
         // neki time u nebu
-
     }
     IEnumerator SpawnablesGenerator()
     {
