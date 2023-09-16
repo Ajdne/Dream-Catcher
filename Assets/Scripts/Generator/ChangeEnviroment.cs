@@ -42,4 +42,5 @@ public class ChangeEnviroment : MonoBehaviour
             CameraMotor.Instance.offset = new (0, -3f, -10f);
         }
     }
+
 }
