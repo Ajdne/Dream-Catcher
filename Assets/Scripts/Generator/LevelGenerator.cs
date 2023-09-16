@@ -35,7 +35,7 @@ public class LevelGenerator : MonoBehaviour
     }
 
     private int numb;
-    private bool isVertical;
+    public bool isVertical;
 
     IEnumerator EnvironmentController()
     {

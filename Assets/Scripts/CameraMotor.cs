@@ -5,7 +5,8 @@ using UnityEngine;
 public class CameraMotor : MonoBehaviour
 {
     public Transform lookAt; // object we are looking at
-    public Vector3 offset = new Vector3(0, 5f, -10f);
+    public Vector3 offset = new (0, 5f, -10f);
+    public Vector3 offset2 = new (0, -3f, -10f);
 
     private void Start()
     {
@@ -13,7 +14,16 @@ public class CameraMotor : MonoBehaviour
     }
     private void Update()
     {
-        Vector3 desiredPosition = lookAt.position + offset;
+        Vector3 desiredPosition;
+        if (LevelGenerator.Instance.isVertical)
+        {
+            desiredPosition = lookAt.position + offset2;
+        }
+        else
+        {
+            desiredPosition = lookAt.position + offset;
+        }
+
         transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime*3);
     }
 }
