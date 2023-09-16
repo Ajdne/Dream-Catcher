@@ -100,6 +100,7 @@ public class ObjectPooler : MonoBehaviour
                         return pooledEnvironments[i];
                     }
                 }
+
                 return null;
             default:
                 return pooledEnvironments[1];

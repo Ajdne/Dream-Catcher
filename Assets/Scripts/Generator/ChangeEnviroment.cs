@@ -15,8 +15,7 @@ public class ChangeEnviroment : MonoBehaviour
      */
     public static ChangeEnviroment Instance;
     public static int GameEnviroment;
-    [SerializeField]
-    private Camera _Camera;
+
     private void Awake()
     {
         GameEnviroment = 1;
@@ -43,4 +42,45 @@ public class ChangeEnviroment : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("Kurac");
+        if (other.CompareTag("Environment"))
+        {
+            numb++;
+            isVertical = true;
+        }
+    }
+
+    public int numb;
+    public bool isVertical;
+
+    public IEnumerator EnvironmentController()
+    {
+        while (LevelGenerator.Instance.IsAlive)
+        {
+            if (numb >= 10)
+            {
+                numb = 0;
+                if (isVertical)
+                {
+                    ObjectPooler.Instance.TurnOffEnvironment();
+                    ChangeEnviroment.Instance.ChangeEnvironmentFunction(7);
+                    isVertical = false;
+                }
+                else
+                {
+                    int rand = Random.Range(1, 7);
+                    ChangeEnviroment.Instance.ChangeEnvironmentFunction(rand);
+                }
+            }
+            yield return null;
+        }
+        // promeni se jedan horizontalan
+        // promeni na novi envi (numb)
+        // 5 ciklusa spawna se ceka
+        // promeni se u nebo
+        // promeni na novi envi (numb)
+        // neki time u nebu
+    }
 }

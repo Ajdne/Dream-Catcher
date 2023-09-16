@@ -16,6 +16,8 @@ public class LevelGenerator : MonoBehaviour
     public bool IsAlive;
     private Vector3 startPos = new(0f, -0.5f, 450f);
 
+
+
     IEnumerator EnvironmentGenerator()
     {
         while (IsAlive)
@@ -29,43 +31,11 @@ public class LevelGenerator : MonoBehaviour
                 spawnedObject.transform.rotation = Quaternion.identity;
                 spawnedObject.SetActive(true);
                 spawn = false;
-                numb++;
             }
         }
     }
 
-    private int numb;
-    public bool isVertical = true;
 
-    IEnumerator EnvironmentController()
-    {
-        while (IsAlive)
-        {
-            if (numb >= 5) 
-            {
-                numb = 0;
-                if (isVertical)
-                {
-                    ObjectPooler.Instance.TurnOffEnvironment();
-                    ChangeEnviroment.Instance.ChangeEnvironmentFunction(7);
-                    isVertical = false;
-                }
-                else
-                {
-                    int rand = Random.Range(1, 7);
-                    ChangeEnviroment.Instance.ChangeEnvironmentFunction(rand);
-                    isVertical = true;
-                }
-            }
-            yield return null;
-        }
-        // promeni se jedan horizontalan
-        // promeni na novi envi (numb)
-        // 5 ciklusa spawna se ceka
-        // promeni se u nebo
-        // promeni na novi envi (numb)
-        // neki time u nebu
-    }
     IEnumerator SpawnablesGenerator()
     {
         while(IsAlive)
@@ -89,7 +59,6 @@ public class LevelGenerator : MonoBehaviour
         if (other.CompareTag("Environment"))
         {
             spawn = true;
-            other.GetComponent<BoxCollider>().enabled = false;
         }
     }
     private void Awake()
@@ -105,7 +74,7 @@ public class LevelGenerator : MonoBehaviour
         StartCoroutine(EnvironmentGenerator());
         StartCoroutine(SpawnablesGenerator());
         StartCoroutine(GameSpeedUpdate());
-        StartCoroutine(EnvironmentController());
+        StartCoroutine(ChangeEnviroment.Instance.EnvironmentController());
     }
     IEnumerator GameSpeedUpdate()
     {
