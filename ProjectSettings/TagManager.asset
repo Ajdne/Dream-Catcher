@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Obstacle
   - Environment
+  - Cloud
+  - Settings
+  - Shop
+  - MainMenu
   layers:
   - Default
   - TransparentFX

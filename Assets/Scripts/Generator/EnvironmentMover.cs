@@ -29,11 +29,5 @@ public class EnvironmentMover : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(LevelGenerator.Instance.numb >= 5)
-        {
 
-        }
-    }
 }

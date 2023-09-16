@@ -1,25 +1,27 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public GameObject MainMenu;
-    public GameObject OptionsMenu;
-
-    public void OnStartButtonClick()
+    [SerializeField] private GameObject _fadePanel;
+    public void Dream()
     {
-        SceneManager.LoadScene("Placeholder");
+        _fadePanel.SetActive(true);
+        Image slika = _fadePanel.GetComponent<Image>();
+        slika.DOFade(0, 0); //plejsholder
+        SceneManager.LoadScene("Gameplay");
     }
 
-    public void OnOptionsButtonClick()
+    public void ChangeInput()
     {
-        MainMenu.SetActive(false);
-        OptionsMenu.SetActive(true);
+        //menja player pref za input
+        //input menager cita koja je vrednost na pocetku
     }
 
-    public void OnBackButtonClick()
+    public void MusicOnOff()
     {
-        OptionsMenu.SetActive(false);
-        MainMenu.SetActive(true);
+        //TODO
     }
 }
