@@ -12,4 +12,6 @@ public class Player : MonoBehaviour
         Instance = this;
         Health = 3;
     }
+    //TODO: slusa event transformers proverava koji je novi tip environmenta i prilagodjava se environmentu
+    // skoci i pretvori se
 }

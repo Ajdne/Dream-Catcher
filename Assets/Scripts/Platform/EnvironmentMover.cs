@@ -8,7 +8,7 @@ using System.Net;
 public class EnvironmentMover : MonoBehaviour
 {
     private Transform Transform;
-    private Vector3 endPos = new (0f, -0.5f, -150f);
+    private Vector3 endPos = new(0f, -0.5f, -150f);
     private float step;
     private void Awake()
     {
@@ -16,11 +16,11 @@ public class EnvironmentMover : MonoBehaviour
     }
     private void Start()
     {
-
+        // start check environment if not 7 idi na levo ako je 7 idi na gore
     }
     private void FixedUpdate()
     {
-        step = LevelGenerator.gameSpeed*Time.fixedDeltaTime*2;
+        step = LevelGenerator.gameSpeed * Time.fixedDeltaTime * 2;
         Transform.position = Vector3.MoveTowards(Transform.position, endPos, step);
         if (Transform.position == endPos)
         {
@@ -28,12 +28,5 @@ public class EnvironmentMover : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(LevelGenerator.Instance.numb >= 5)
-        {
-
-        }
-    }
 }
+

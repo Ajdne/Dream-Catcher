@@ -7,8 +7,7 @@ public class LevelGenerator : MonoBehaviour
     public static LevelGenerator Instance;
     [SerializeField]
     private List<GameObject> spawnableObjects = new List<GameObject>();
-    [SerializeField]
-    private List<Vector3> spawnPositions = new List<Vector3>();
+
 
     public static float gameSpeed;
     public ObjectPooler theObjectPool;
@@ -17,10 +16,13 @@ public class LevelGenerator : MonoBehaviour
     private Vector3 startPos = new(0f, -0.5f, 450f);
 
     public static int EnvironmentCounter;
-
+    // slusa transformers event
+    // proverava koji je tip environmenta
+    // od 1 do 6 ukljucuje generator
+    // ako je 7 iskljucuje generator i stvara veliku platformu dole
     IEnumerator EnvironmentGenerator()
     {
-        // stvara platforme, kad dobije znak stvara na platformi transition objekat
+        // stvara platforme, kad dobije znak ukljucuje capsule colider na platformi
         // znak za transition objekat je broj na sa countera,
         // counter moze da bude broj koji ce da se povecava nakon svake platforme ili samo time brojac
         // transition objekat poziva funkciju koja ima dve opcije
@@ -41,7 +43,8 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-
+    [SerializeField]
+    private List<Vector3> spawnPositions = new List<Vector3>();
     IEnumerator SpawnablesGenerator()
     {
         while(IsAlive)
