@@ -38,7 +38,7 @@ public class ObjectPooler : MonoBehaviour
         switch(ChangeEnviroment.GameEnviroment)
         {
             case 1:
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 30; i++)
                 {
                     if (!pooledEnvironments[i].activeInHierarchy)
                     {
@@ -47,7 +47,7 @@ public class ObjectPooler : MonoBehaviour
                 }
                 return null;
             case 2:
-                for (int i = 5; i < 10; i++)
+                for (int i = 5; i < 30; i++)
                 {
                     if (!pooledEnvironments[i].activeInHierarchy)
                     {
@@ -56,7 +56,7 @@ public class ObjectPooler : MonoBehaviour
                 }
                 return null;
             case 3:
-                for (int i = 10; i < 15; i++)
+                for (int i = 10; i < 30; i++)
                 {
                     if (!pooledEnvironments[i].activeInHierarchy)
                     {
@@ -65,7 +65,7 @@ public class ObjectPooler : MonoBehaviour
                 }
                 return null;
             case 4:
-                for (int i = 15; i < 20; i++)
+                for (int i = 15; i < 30; i++)
                 {
                     if (!pooledEnvironments[i].activeInHierarchy)
                     {
@@ -74,7 +74,7 @@ public class ObjectPooler : MonoBehaviour
                 }
                 return null;
             case 5:
-                for (int i = 20; i < 25; i++)
+                for (int i = 20; i < 30; i++)
                 {
                     if (!pooledEnvironments[i].activeInHierarchy)
                     {

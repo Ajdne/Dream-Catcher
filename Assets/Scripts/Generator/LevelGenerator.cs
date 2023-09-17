@@ -13,6 +13,7 @@ public class LevelGenerator : MonoBehaviour
     public ObjectPooler theObjectPool;
     public bool spawn;
     public bool IsAlive;
+    public bool GeneratorOn;
     private Vector3 startPos = new(0f, -0.2f, 450f);
 
     // slusa transformers event
@@ -22,12 +23,16 @@ public class LevelGenerator : MonoBehaviour
         // od 1 do 6 ukljucuje generator
         if (Id != 7)
         {
+            GeneratorOn = true;
             StartCoroutine(EnvironmentGenerator());
+
+            Debug.Log("Startuj envi gen");
             return;
         }
         else // ako je 7 iskljucuje generator i stvara veliku platformu dole
         {
-            StopCoroutine(EnvironmentGenerator());
+            GeneratorOn = false;
+            Debug.Log("Iskljuci envi gen");
             SpawnStartPlatform();
         }
     }
@@ -38,7 +43,7 @@ public class LevelGenerator : MonoBehaviour
         pozicije[1] = new(0, -150, 150);
         pozicije[2] = new(0, -150, 450);
         pozicije[3] = new(0, -150, 300);
-        for(int i = 0; i<4; i++)
+        for(int i = 0; i<pozicije.Length; i++)
         {
             GameObject spawnedObject = theObjectPool.GetPooledObject();
             spawnedObject.transform.SetPositionAndRotation(pozicije[i], Quaternion.identity);
@@ -50,32 +55,34 @@ public class LevelGenerator : MonoBehaviour
             }
             spawnedObject.SetActive(true);
         }
-        EnvironmentCounter = 0;
+
     }
     public static int EnvironmentCounter = 0;
     IEnumerator EnvironmentGenerator()
     {
         // stvara platforme
         // znak za transition objekat je broj sa countera
-        while (IsAlive)
+        while (GeneratorOn)
         {
             yield return null;
             if (spawn)
             {
-
+                Debug.Log("Stvaranje broj " + EnvironmentCounter);
                 GameObject spawnedObject = theObjectPool.GetPooledObject();
                 spawnedObject.transform.SetPositionAndRotation(startPos, Quaternion.identity);
                 spawnedObject.SetActive(true);
 
                 if (EnvironmentCounter >= 4) //ukljucuje capsule colider na platformi i gasi corutinu
                 {
+                    EnvironmentCounter = 0;
                     spawnedObject.GetComponent<CapsuleCollider>().enabled = true;
                     spawnedObject.GetComponent<BoxCollider>().enabled = false;
                     spawn = false;
-                    StopCoroutine(EnvironmentGenerator());
+                    GeneratorOn = false;
                 }
-                EnvironmentCounter++;
+
                 spawn = false;
+                Debug.Log("spawn false");
             }
         }
     }
@@ -104,7 +111,9 @@ public class LevelGenerator : MonoBehaviour
     {
         if (other.CompareTag("Environment"))
         {
+            Debug.Log("On trigger exit spawn true");
             spawn = true;
+            EnvironmentCounter++;
         }
     }
     private void Awake()
@@ -125,7 +134,7 @@ public class LevelGenerator : MonoBehaviour
     public void StartGame()
     {
         IsAlive = true;
-        //StartCoroutine(EnvironmentGenerator());
+        StartCoroutine(EnvironmentGenerator());
         StartCoroutine(SpawnablesGenerator());
         StartCoroutine(GameSpeedUpdate());
     }
