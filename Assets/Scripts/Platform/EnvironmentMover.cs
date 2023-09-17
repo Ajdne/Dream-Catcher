@@ -7,7 +7,6 @@ using System.Net;
 
 public class EnvironmentMover : MonoBehaviour
 {
-    private EnvironmentMover environmentMover;
     private Transform Transform;
     private Vector3 endPos;
 
@@ -15,7 +14,6 @@ public class EnvironmentMover : MonoBehaviour
     private void Awake()
     {
         Transform = GetComponent<Transform>();
-        environmentMover = GetComponent<EnvironmentMover>();
     }
     private void OnEnable()
     {
@@ -28,7 +26,10 @@ public class EnvironmentMover : MonoBehaviour
         //kad dodjes na krajnju poziciju
         if(Transform.position == endPos )
         {
-            gameObject.SetActive(false);
+            Debug.Log("Vrati u pool");
+            gameObject.transform.Find("Trigger1").gameObject.SetActive(false);
+            gameObject.transform.Find("Trigger2").gameObject.SetActive(false);
+            ObjectPoolManager.ReturnObject(gameObject);
         }
     }
 }
