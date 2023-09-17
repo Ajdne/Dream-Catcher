@@ -23,7 +23,11 @@ public class ChangeEnviroment : MonoBehaviour
     }
     private void Start()
     {
-        //ChangeCamera();
+        EventManager.EnvironmentTransformEvent += ChangeEnvironmentFunction;
+    }
+    private void OnDisable()
+    {
+        EventManager.EnvironmentTransformEvent -= ChangeEnvironmentFunction;
     }
     public void ChangeEnvironmentFunction(int numb)
     {
@@ -40,37 +44,5 @@ public class ChangeEnviroment : MonoBehaviour
         {
             CameraMotor.Instance.offset = new (0, -3f, -10f);
         }
-    }
-
-    public int numb;
-    public bool isVertical;
-
-    public IEnumerator EnvironmentController()
-    {
-        while (LevelGenerator.Instance.IsAlive)
-        {
-            if (numb >= 10)
-            {
-                numb = 0;
-                if (isVertical)
-                {
-                    ObjectPooler.Instance.TurnOffEnvironment();
-                    ChangeEnviroment.Instance.ChangeEnvironmentFunction(7);
-                    isVertical = false;
-                }
-                else
-                {
-                    int rand = Random.Range(1, 7);
-                    ChangeEnviroment.Instance.ChangeEnvironmentFunction(rand);
-                }
-            }
-            yield return null;
-        }
-        // promeni se jedan horizontalan
-        // promeni na novi envi (numb)
-        // 5 ciklusa spawna se ceka
-        // promeni se u nebo
-        // promeni na novi envi (numb)
-        // neki time u nebu
     }
 }

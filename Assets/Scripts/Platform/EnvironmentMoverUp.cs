@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using UnityEngine.UIElements;
-using System.Net;
 
-public class EnvironmentMover : MonoBehaviour
+public class EnvironmentMoverUp : MonoBehaviour
 {
     private EnvironmentMover environmentMover;
+    private EnvironmentMoverUp environmentMoverUp;
     private Transform Transform;
     private Vector3 endPos;
 
@@ -16,20 +14,20 @@ public class EnvironmentMover : MonoBehaviour
     {
         Transform = GetComponent<Transform>();
         environmentMover = GetComponent<EnvironmentMover>();
+        environmentMoverUp = GetComponent<EnvironmentMoverUp>();
     }
     private void Start()
     {
-            endPos = new(0f, -0.2f, -140f);
+            endPos = new(0, -0.2f, transform.position.z);
     }
     private void Update()
     {
         step = LevelGenerator.gameSpeed * Time.deltaTime;
         Transform.position = Vector3.MoveTowards(Transform.position, endPos, step);
-        //kad dodjes na krajnju poziciju
-        if(Transform.position == endPos )
+        if (Transform.position == endPos)
         {
-            gameObject.SetActive(false);
+            environmentMover.enabled = true;
+            environmentMoverUp.enabled = false;
         }
     }
 }
-

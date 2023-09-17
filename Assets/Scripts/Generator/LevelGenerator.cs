@@ -6,51 +6,87 @@ public class LevelGenerator : MonoBehaviour
 {
     public static LevelGenerator Instance;
     [SerializeField]
-    private List<GameObject> spawnableObjects = new List<GameObject>();
+    private List<GameObject> spawnableObjects = new();
 
 
     public static float gameSpeed;
     public ObjectPooler theObjectPool;
     public bool spawn;
     public bool IsAlive;
-    private Vector3 startPos = new(0f, -0.5f, 450f);
+    public bool GeneratorOn;
+    private Vector3 startPos = new(0f, -0.2f, 450f);
 
-    public static int EnvironmentCounter;
     // slusa transformers event
-    // proverava koji je tip environmenta
-    // od 1 do 6 ukljucuje generator
-    // ako je 7 iskljucuje generator i stvara veliku platformu dole
+    private void EnvironemntListener(int Id)
+    {
+        // proverava koji je tip environmenta
+        // od 1 do 6 ukljucuje generator
+        if (Id != 7)
+        {
+            GeneratorOn = true;
+            spawn = false;
+            StartCoroutine(EnvironmentGenerator());
+        }
+        else // ako je 7 iskljucuje generator i stvara veliku platformu dole
+        {
+            GeneratorOn = false;
+            SpawnStartPlatform();
+        }
+    }
+    private void SpawnStartPlatform()
+    {
+        Vector3[] pozicije = new Vector3[4];  
+        pozicije[0] = new(0, -150, 0);
+        pozicije[1] = new(0, -150, 150);
+        pozicije[2] = new(0, -150, 450);
+        pozicije[3] = new(0, -150, 300);
+        for(int i = 0; i<4; i++)
+        {
+            GameObject spawnedObject = theObjectPool.GetPooledObject();
+            spawnedObject.transform.SetPositionAndRotation(pozicije[i], Quaternion.identity);
+            spawnedObject.GetComponent<EnvironmentMoverUp>().enabled = true;
+            spawnedObject.GetComponent<EnvironmentMover>().enabled = false;
+            if (i == 0)
+            {
+                spawnedObject.GetComponent<SphereCollider>().enabled = true;
+            }
+            spawnedObject.SetActive(true);
+        }
+    }
+    public static int EnvironmentCounter;
     IEnumerator EnvironmentGenerator()
     {
-        // stvara platforme, kad dobije znak ukljucuje capsule colider na platformi
-        // znak za transition objekat je broj na sa countera,
-        // counter moze da bude broj koji ce da se povecava nakon svake platforme ili samo time brojac
-        // transition objekat poziva funkciju koja ima dve opcije
-        // 
-        while (IsAlive)
+        EnvironmentCounter = 0;
+        // stvara platforme
+        // znak za transition objekat je broj sa countera
+        while (GeneratorOn)
         {
             yield return null;
             if (spawn)
             {
-                GameObject spawnedObject = theObjectPool.GetPooledObject();
-
-                spawnedObject.transform.position = startPos;
-                spawnedObject.transform.rotation = Quaternion.identity;
-                spawnedObject.SetActive(true);
-                spawn = false;
                 EnvironmentCounter++;
+                GameObject spawnedObject = theObjectPool.GetPooledObject();
+                spawnedObject.transform.SetPositionAndRotation(startPos, Quaternion.identity);
+                spawnedObject.SetActive(true);
+
+                if (EnvironmentCounter == 4) //ukljucuje capsule colider na platformi
+                {
+                    spawnedObject.gameObject.GetComponent<CapsuleCollider>().enabled = true;
+                    GeneratorOn = false;
+                }
+                spawn = false;
             }
         }
     }
 
     [SerializeField]
-    private List<Vector3> spawnPositions = new List<Vector3>();
+    private List<Vector3> spawnPositions = new();
     IEnumerator SpawnablesGenerator()
     {
         while(IsAlive)
         {
             int rand2;
-            if (ChangeEnviroment.GameEnviroment == 1)
+            if (ChangeEnviroment.GameEnviroment != 7)
             {
                 rand2 = Random.Range(0, 3);
             }
@@ -60,7 +96,7 @@ public class LevelGenerator : MonoBehaviour
             }
             int rand = Random.Range(0, spawnableObjects.Count);
             Instantiate(spawnableObjects[rand], spawnPositions[rand2], Quaternion.Euler(0,180f,0));
-            yield return new WaitForSecondsRealtime(3);
+            yield return new WaitForSecondsRealtime(2);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -73,9 +109,17 @@ public class LevelGenerator : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        gameSpeed = 7f;
+        gameSpeed = 25f;
         spawn = false;
         IsAlive = false;
+    }
+    private void OnEnable()
+    {
+        EventManager.EnvironmentTransformEvent += EnvironemntListener;
+    }
+    private void OnDisable()
+    {
+        EventManager.EnvironmentTransformEvent -= EnvironemntListener;
     }
     public void StartGame()
     {
@@ -83,7 +127,6 @@ public class LevelGenerator : MonoBehaviour
         StartCoroutine(EnvironmentGenerator());
         StartCoroutine(SpawnablesGenerator());
         StartCoroutine(GameSpeedUpdate());
-        StartCoroutine(ChangeEnviroment.Instance.EnvironmentController());
     }
     IEnumerator GameSpeedUpdate()
     {

@@ -23,7 +23,6 @@ public class ObjectPooler : MonoBehaviour
     {
         Instance = this;
     }
-    // Start is called before the first frame update
     void Start()
     {
         pooledEnvironments = new Dictionary<int, GameObject>();
@@ -104,24 +103,6 @@ public class ObjectPooler : MonoBehaviour
                 return null;
             default:
                 return pooledEnvironments[1];
-        }
-        /*for(int i = 0; i < pooledEnvironments.Count; i++)
-        {
-            if (!pooledObjects[i].activeInHierarchy)
-            {
-                return pooledObjects[i];
-            }
-        }
-        GameObject obj = (GameObject)Instantiate(pooledObject);
-        obj.SetActive(false);
-        pooledObjects.Add(obj);
-        return obj;*/
-    }
-    public void TurnOffEnvironment()
-    {
-        foreach(KeyValuePair<int, GameObject> kvp in  pooledEnvironments)
-        {
-            kvp.Value.SetActive(false);
         }
     }
 }
