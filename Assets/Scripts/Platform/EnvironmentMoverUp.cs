@@ -16,9 +16,9 @@ public class EnvironmentMoverUp : MonoBehaviour
         environmentMover = GetComponent<EnvironmentMover>();
         environmentMoverUp = GetComponent<EnvironmentMoverUp>();
     }
-    private void Start()
+    private void OnEnable()
     {
-            endPos = new(0, -0.2f, transform.position.z);
+        endPos = new(0, -0.2f, transform.position.z);
     }
     private void Update()
     {

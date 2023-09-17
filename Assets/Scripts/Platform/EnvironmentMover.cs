@@ -17,9 +17,9 @@ public class EnvironmentMover : MonoBehaviour
         Transform = GetComponent<Transform>();
         environmentMover = GetComponent<EnvironmentMover>();
     }
-    private void Start()
+    private void OnEnable()
     {
-            endPos = new(0f, -0.2f, -140f);
+        endPos = new(0f, -0.2f, -140f);
     }
     private void Update()
     {

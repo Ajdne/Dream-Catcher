@@ -14,7 +14,7 @@ public class MoveTowardsPlayer : MonoBehaviour
     }
     void Start()
     {
-        if (ChangeEnviroment.GameEnviroment == 1)
+        if (ChangeEnviroment.GameEnviroment != 7)
         {
             endPos = new(_transform.position.x, 0, -10);
         }

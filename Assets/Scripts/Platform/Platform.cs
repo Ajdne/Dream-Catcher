@@ -13,7 +13,7 @@ public class Platform : MonoBehaviour
     }
     private void Start()
     {
-        if(ChangeEnviroment.GameEnviroment == 7)
+        if (ChangeEnviroment.GameEnviroment == 7)
         {
             environmentMoverUp.enabled = true;
             environmentMover.enabled = false;
@@ -24,9 +24,9 @@ public class Platform : MonoBehaviour
             environmentMover.enabled = true;
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
-
         //Kada player pipne triger
         if (other.CompareTag("Player"))
         {
