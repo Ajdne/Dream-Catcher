@@ -39,7 +39,7 @@ public class LevelGenerator : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        gameSpeed = 25f;
+        gameSpeed = 0f;
         spawn = false;
         IsAlive = false;
     }
@@ -76,10 +76,10 @@ public class LevelGenerator : MonoBehaviour
     private void SpawnStartPlatform()
     {
         Vector3[] pozicije = new Vector3[4];
-        pozicije[0] = new(0, -150, 0);
-        pozicije[1] = new(0, -150, 150);
-        pozicije[2] = new(0, -150, 450);
-        pozicije[3] = new(0, -150, 300);
+        pozicije[0] = new(0, -200, 0);
+        pozicije[1] = new(0, -200, 150);
+        pozicije[2] = new(0, -200, 450);
+        pozicije[3] = new(0, -200, 300);
         for (int i = 0; i < pozicije.Length; i++)
         {
             GameObject platform = ObjectPoolManager.SpawnObject(EnvironmentPlatforms[0], pozicije[i], Quaternion.identity);
@@ -101,6 +101,7 @@ public class LevelGenerator : MonoBehaviour
     }
     public void StartGame()
     {
+        gameSpeed = 5;
         IsAlive = true;
         StartCoroutine(SpawnablesGenerator());
         StartCoroutine(GameSpeedUpdate());

@@ -12,7 +12,7 @@ public class MoveTowardsPlayer : MonoBehaviour
         _transform = GetComponent<Transform>();
 
     }
-    void Start()
+    private void OnEnable()
     {
         if (ChangeEnviroment.GameEnviroment != 7)
         {
@@ -22,15 +22,14 @@ public class MoveTowardsPlayer : MonoBehaviour
         {
             endPos = new(_transform.position.x, 10, 0);
         }
-        step = LevelGenerator.gameSpeed*Time.deltaTime;
     }
     private void Update()
     {
-        step = LevelGenerator.gameSpeed * Time.deltaTime;
+        step = LevelGenerator.gameSpeed * Time.fixedDeltaTime;
         _transform.position = Vector3.MoveTowards(_transform.position, endPos, step);
         if(_transform.position == endPos)
         {
-            Destroy(gameObject);
+            ObjectPoolManager.ReturnObject(gameObject);
         }
     }
 }

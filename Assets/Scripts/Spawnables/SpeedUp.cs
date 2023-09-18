@@ -8,10 +8,7 @@ public class SpeedUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if(Time.timeScale <= 2)
-            {
-                Time.timeScale += 0.5f;
-            }
+            LevelGenerator.gameSpeed += 3;
             ObjectPoolManager.ReturnObject(gameObject);
         }
     }

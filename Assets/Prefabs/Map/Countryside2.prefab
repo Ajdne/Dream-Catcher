@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 1393906828224981599}
   - component: {fileID: 7575486874711269418}
   - component: {fileID: 1585138739641226715}
+  - component: {fileID: 4946698485171172631}
   m_Layer: 0
   m_Name: Countryside2
   m_TagString: Environment
@@ -233,7 +234,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2474533607023360661}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0912297fae1e36c48a728f79edea6467, type: 3}
   m_Name: 
@@ -259,6 +260,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 50, z: 150}
   m_Center: {x: 10, y: 0, z: 60}
+--- !u!114 &4946698485171172631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2474533607023360661}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43e93e7d786f7f459ee3108bf6bd900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3464389180370622062
 GameObject:
   m_ObjectHideFlags: 0

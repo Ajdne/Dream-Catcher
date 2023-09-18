@@ -21,7 +21,7 @@ public class EnvironmentMover : MonoBehaviour
     }
     private void Update()
     {
-        step = LevelGenerator.gameSpeed * Time.deltaTime;
+        step = LevelGenerator.gameSpeed * Time.fixedDeltaTime;
         Transform.position = Vector3.MoveTowards(Transform.position, endPos, step);
         //kad dodjes na krajnju poziciju
         if(Transform.position == endPos )
