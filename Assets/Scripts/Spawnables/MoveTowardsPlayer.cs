@@ -12,9 +12,9 @@ public class MoveTowardsPlayer : MonoBehaviour
         _transform = GetComponent<Transform>();
 
     }
-    void Start()
+    private void OnEnable()
     {
-        if (ChangeEnviroment.GameEnviroment == 1)
+        if (ChangeEnviroment.GameEnviroment != 7)
         {
             endPos = new(_transform.position.x, 0, -10);
         }
@@ -22,7 +22,6 @@ public class MoveTowardsPlayer : MonoBehaviour
         {
             endPos = new(_transform.position.x, 10, 0);
         }
-        step = LevelGenerator.gameSpeed*Time.deltaTime;
     }
     private void Update()
     {
@@ -30,7 +29,7 @@ public class MoveTowardsPlayer : MonoBehaviour
         _transform.position = Vector3.MoveTowards(_transform.position, endPos, step);
         if(_transform.position == endPos)
         {
-            Destroy(gameObject);
+            ObjectPoolManager.ReturnObject(gameObject);
         }
     }
 }

@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class SpeedUp : MonoBehaviour
 {
+    public static int MultiplierCounter = 0;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && MultiplierCounter < 3)
         {
-            if(Time.timeScale <= 2)
-            {
-                Time.timeScale += 0.5f;
-            }
-            gameObject.SetActive(false);
+            Player.Instance.Score += 1;
+            LevelGenerator.gameSpeed *= 1.3f;
+            MultiplierCounter++;
         }
+        if(other.CompareTag("Player") && MultiplierCounter >= 3)
+        {
+            Player.Instance.Score += 2;
+        }
+        ObjectPoolManager.ReturnObject(gameObject);
     }
 }

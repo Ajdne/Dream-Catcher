@@ -10,7 +10,7 @@ public class ScoreUp : MonoBehaviour
         {
 
             Player.Instance.Score += 1;
-            gameObject.SetActive(false);
+            ObjectPoolManager.ReturnObject(gameObject);
         }
     }
 }

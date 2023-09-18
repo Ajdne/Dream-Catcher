@@ -10,6 +10,17 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+    }
+    private void Start()
+    {
         Health = 3;
+    }
+    private void Update()
+    {
+        if(Health < 1)
+        {
+            EventManager.StartPlayerDeath();
+        }
     }
 }
