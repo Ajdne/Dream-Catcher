@@ -17,7 +17,6 @@ public class UIManager : MonoBehaviour
     private TMP_Text GameSpeed;
     private void Awake()
     {
-        Time.timeScale = 0f;
         Instance = this;
     }
     // Start is called before the first frame update
@@ -37,26 +36,24 @@ public class UIManager : MonoBehaviour
         GameSpeedScale.text = "Time scale: " + Time.timeScale.ToString();
         GameSpeed.text = "Game speed: " + LevelGenerator.gameSpeed.ToString();
     }
-    public void StartGame()
+    /*public void StartGame()
     {
         transform.Find("MainMenuPanel").gameObject.SetActive(false);
         transform.Find("InGameUI").gameObject.SetActive(true);
         Time.timeScale = 1.0f;
         LevelGenerator.Instance.StartGame();
-    }
-    private int lastTimeScale;
+    }*/
     public void PauseGame()
     {
         transform.Find("InGameUI").gameObject.SetActive(false);
         transform.Find("GamePausePanel").gameObject.SetActive(true);
-        lastTimeScale = (int)Time.timeScale;
         Time.timeScale = 0;
     }
     public void UnpauseGame()
     {
         transform.Find("InGameUI").gameObject.SetActive(true);
         transform.Find("GamePausePanel").gameObject.SetActive(false);
-        Time.timeScale = lastTimeScale;
+        Time.timeScale = 1;
     }
     public void Settings()
     {

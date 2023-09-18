@@ -20,7 +20,7 @@ public class EnvironmentMoverUp : MonoBehaviour
     }
     private void Update()
     {
-        step = LevelGenerator.gameSpeed * Time.fixedDeltaTime;
+        step = LevelGenerator.gameSpeed * Time.deltaTime *0.5f;
         Transform.position = Vector3.MoveTowards(Transform.position, endPos, step);
         if (Transform.position == endPos)
         {

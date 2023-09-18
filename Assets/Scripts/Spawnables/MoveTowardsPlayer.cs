@@ -25,7 +25,7 @@ public class MoveTowardsPlayer : MonoBehaviour
     }
     private void Update()
     {
-        step = LevelGenerator.gameSpeed * Time.fixedDeltaTime;
+        step = LevelGenerator.gameSpeed * Time.deltaTime;
         _transform.position = Vector3.MoveTowards(_transform.position, endPos, step);
         if(_transform.position == endPos)
         {

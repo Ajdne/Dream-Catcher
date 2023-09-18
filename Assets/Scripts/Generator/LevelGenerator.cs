@@ -13,13 +13,14 @@ public class LevelGenerator : MonoBehaviour
     public static float gameSpeed;
 
     public bool spawn;
+    public bool spawnSpawnable;
     public bool IsAlive;
 
     [SerializeField]
     private List<Vector3> spawnPositions = new();
     IEnumerator SpawnablesGenerator()
     {
-        while(IsAlive)
+        while (IsAlive)
         {
             int rand2;
             if (ChangeEnviroment.GameEnviroment != 7)
@@ -39,13 +40,18 @@ public class LevelGenerator : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        gameSpeed = 0f;
         spawn = false;
-        IsAlive = false;
     }
     public static int EnvironmentCounter = 0;
     public bool GeneratorOn;
     private Vector3 startPos = new(0f, -0.2f, 450f);
+    private void Start()
+    {
+        gameSpeed = 55;
+        IsAlive = true;
+        StartCoroutine(SpawnablesGenerator());
+        StartCoroutine(GameSpeedUpdate());
+    }
     private void Update()
     {
         // stvara platforme
@@ -91,21 +97,27 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
+    private void PlayerDeath()
+    {
+        Debug.Log("Umrea");
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        GeneratorOn = false;
+        IsAlive = false;
+        spawn = false;
+        gameSpeed = 0f;
+    }
+    
     private void OnEnable()
     {
         EventManager.EnvironmentTransformEvent += EnvironemntListener;
+        EventManager.PlayerDeath += PlayerDeath;
     }
     private void OnDisable()
     {
         EventManager.EnvironmentTransformEvent -= EnvironemntListener;
+        EventManager.PlayerDeath -= PlayerDeath;
     }
-    public void StartGame()
-    {
-        gameSpeed = 5;
-        IsAlive = true;
-        StartCoroutine(SpawnablesGenerator());
-        StartCoroutine(GameSpeedUpdate());
-    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Environment"))
@@ -136,8 +148,12 @@ public class LevelGenerator : MonoBehaviour
     {
         while(IsAlive)
         {
-            yield return new WaitForSecondsRealtime(2);
-            gameSpeed += 0.5f;
+
+            yield return new WaitForSecondsRealtime(1);
+            if (gameSpeed < 60)
+            {
+                gameSpeed += 0.5f;
+            }
         }
     }
 }

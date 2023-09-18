@@ -10,8 +10,17 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+    }
+    private void Start()
+    {
         Health = 3;
     }
-    //TODO: slusa event transformers proverava koji je novi tip environmenta i prilagodjava se environmentu
-    // skoci i pretvori se
+    private void Update()
+    {
+        if(Health < 1)
+        {
+            EventManager.StartPlayerDeath();
+        }
+    }
 }
