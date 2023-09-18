@@ -9,9 +9,7 @@ public class MainMenuManager : MonoBehaviour
     public void Dream()
     {
         _fadePanel.SetActive(true);
-        Image slika = _fadePanel.GetComponent<Image>();
-        slika.DOFade(0, 0); //plejsholder
-        SceneManager.LoadScene("Gameplay");
+        _fadePanel.transform.DOShakeScale(1.3f).OnComplete(() => SceneManager.LoadScene("Gameplay"));
     }
 
     public void ChangeInput()
