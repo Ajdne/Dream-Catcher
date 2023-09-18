@@ -12,7 +12,7 @@ public class HealthUp : MonoBehaviour
             {
                 Player.Instance.Health += 1;
             }
-            gameObject.SetActive(false);
+            ObjectPoolManager.ReturnObject(gameObject);
         }
     }
 }

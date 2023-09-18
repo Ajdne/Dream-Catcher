@@ -26,9 +26,9 @@ public class EnvironmentMover : MonoBehaviour
         //kad dodjes na krajnju poziciju
         if(Transform.position == endPos )
         {
-            Debug.Log("Vrati u pool");
             gameObject.transform.Find("Trigger1").gameObject.SetActive(false);
             gameObject.transform.Find("Trigger2").gameObject.SetActive(false);
+            enabled = false;
             ObjectPoolManager.ReturnObject(gameObject);
         }
     }

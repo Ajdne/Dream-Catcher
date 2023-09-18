@@ -9,7 +9,7 @@ public class Platform : MonoBehaviour
         //Kada player pipne triger
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player usao u platform colider");
+            Debug.Log("Player usao u platform colider: "+gameObject.name);
             // ako nije nebo promeni u nebo
             if(ChangeEnviroment.GameEnviroment != 7)
             {

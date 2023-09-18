@@ -31,7 +31,7 @@ public class LevelGenerator : MonoBehaviour
                 rand2 = Random.Range(3, spawnPositions.Count);
             }
             int rand = Random.Range(0, spawnableObjects.Count);
-            Instantiate(spawnableObjects[rand], spawnPositions[rand2], Quaternion.Euler(0,180f,0));
+            ObjectPoolManager.SpawnObject(spawnableObjects[rand], spawnPositions[rand2], Quaternion.Euler(0, 180f, 0));
             yield return new WaitForSecondsRealtime(2);
         }
     }
@@ -54,21 +54,22 @@ public class LevelGenerator : MonoBehaviour
         {
             if (spawn)
             {
+                EnvironmentCounter++;
                 Debug.Log("Stvaranje broj " + EnvironmentCounter);
                 GameObject platform = ObjectPoolManager.SpawnObject(EnvironmentPlatforms[0], startPos, Quaternion.identity);
-                platform.GetComponent<EnvironmentMoverUp>().enabled = false;
+                //platform.GetComponent<EnvironmentMoverUp>().enabled = false;
                 platform.GetComponent<EnvironmentMover>().enabled = true;
-
+                platform.GetComponent<BoxCollider>().enabled = true;
                 if (EnvironmentCounter == 4) //ukljucuje capsule colider na platformi i gasi corutinu
                 {
                     EnvironmentCounter = 0;
                     platform.transform.Find("Trigger2").gameObject.SetActive(true);
-
+                    platform.GetComponent<BoxCollider>().enabled = false;
                     GeneratorOn = false;
                 }
 
                 spawn = false;
-                Debug.Log("spawn false");
+                Debug.Log("Spawn false");
             }
         }
     }
@@ -83,7 +84,7 @@ public class LevelGenerator : MonoBehaviour
         {
             GameObject platform = ObjectPoolManager.SpawnObject(EnvironmentPlatforms[0], pozicije[i], Quaternion.identity);
             platform.GetComponent<EnvironmentMoverUp>().enabled = true;
-            platform.GetComponent<EnvironmentMover>().enabled = false;
+            //platform.GetComponent<EnvironmentMover>().enabled = false;
             if (i == 0)
             {
                 platform.transform.Find("Trigger1").gameObject.SetActive(true);
@@ -108,9 +109,8 @@ public class LevelGenerator : MonoBehaviour
     {
         if (other.CompareTag("Environment"))
         {
-            Debug.Log("On trigger exit spawn true");
+            Debug.Log("Spawn true");
             spawn = true;
-            EnvironmentCounter++;
         }
     }
     // slusa transformers event

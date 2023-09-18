@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnvironmentMoverUp : MonoBehaviour
 {
     private EnvironmentMover environmentMover;
-    private EnvironmentMoverUp environmentMoverUp;
     private Transform Transform;
     private Vector3 endPos;
 
@@ -14,7 +13,6 @@ public class EnvironmentMoverUp : MonoBehaviour
     {
         Transform = GetComponent<Transform>();
         environmentMover = GetComponent<EnvironmentMover>();
-        environmentMoverUp = GetComponent<EnvironmentMoverUp>();
     }
     private void OnEnable()
     {
@@ -27,7 +25,7 @@ public class EnvironmentMoverUp : MonoBehaviour
         if (Transform.position == endPos)
         {
             environmentMover.enabled = true;
-            environmentMoverUp.enabled = false;
+            enabled = false;
         }
     }
 }

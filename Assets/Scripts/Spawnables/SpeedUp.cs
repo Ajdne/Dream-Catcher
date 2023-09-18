@@ -12,7 +12,7 @@ public class SpeedUp : MonoBehaviour
             {
                 Time.timeScale += 0.5f;
             }
-            gameObject.SetActive(false);
+            ObjectPoolManager.ReturnObject(gameObject);
         }
     }
 }
