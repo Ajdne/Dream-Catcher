@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -12,9 +13,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TMP_Text PlayerScore;
     [SerializeField]
-    private TMP_Text GameSpeedScale;
-    [SerializeField]
     private TMP_Text GameSpeed;
+    [SerializeField]
+    private TMP_Text FinalScore;
     private void Awake()
     {
         Instance = this;
@@ -22,27 +23,18 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerHealth.text = "Health: "+Player.Instance.Health.ToString();
+        PlayerHealth.text = "Hearts: "+Player.Instance.Health.ToString();
         PlayerScore.text = "Score: "+Player.Instance.Score.ToString();
-        GameSpeedScale.text = "Time scale: " + Time.timeScale.ToString();
-        GameSpeed.text = "Game speed: " + LevelGenerator.gameSpeed.ToString();
+        GameSpeed.text = "Speed: " + LevelGenerator.gameSpeed.ToString("F1");
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerHealth.text = "Health: " + Player.Instance.Health.ToString();
-        PlayerScore.text = "Score: " + Player.Instance.Score.ToString();
-        GameSpeedScale.text = "Time scale: " + Time.timeScale.ToString();
-        GameSpeed.text = "Game speed: " + LevelGenerator.gameSpeed.ToString();
+        PlayerHealth.text = "Hearts: " + Player.Instance.Health.ToString();
+        PlayerScore.text = "Sheep: " + Player.Instance.Score.ToString();
+        GameSpeed.text = "Speed: " + LevelGenerator.gameSpeed.ToString("F1")+"%";
     }
-    /*public void StartGame()
-    {
-        transform.Find("MainMenuPanel").gameObject.SetActive(false);
-        transform.Find("InGameUI").gameObject.SetActive(true);
-        Time.timeScale = 1.0f;
-        LevelGenerator.Instance.StartGame();
-    }*/
     public void PauseGame()
     {
         transform.Find("InGameUI").gameObject.SetActive(false);
@@ -65,5 +57,26 @@ public class UIManager : MonoBehaviour
         transform.Find("SettingsPanel").gameObject.SetActive(false);
         transform.Find("MainMenuPanel").gameObject.SetActive(true);
     }
-
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MenuNormalColor");
+    }
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene("Gameplay");
+    }
+    public void PlayerDeath()
+    {
+        transform.Find("InGameUI").gameObject.SetActive(false);
+        transform.Find("DeathPanel").gameObject.SetActive(true);
+        FinalScore.text = "Sheep counted: " + Player.Instance.Score.ToString();
+    }
+    private void OnEnable()
+    {
+        EventManager.PlayerDeath += PlayerDeath;
+    }
+    private void OnDisable()
+    {
+        EventManager.PlayerDeath -= PlayerDeath;
+    }
 }

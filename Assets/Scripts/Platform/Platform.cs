@@ -11,7 +11,7 @@ public class Platform : MonoBehaviour
         {
             Debug.Log("Player usao u platform colider: "+gameObject.name);
             // ako nije nebo promeni u nebo
-            if(ChangeEnviroment.GameEnviroment != 7)
+            if(LevelGenerator.GameEnvironment != 7)
             {
                 // startuje event transformers prosledjuje tip environmenta
                 EventManager.StartEnvironmentTransformEvent(7);

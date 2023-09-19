@@ -8,10 +8,10 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private List<GameObject> spawnableObjects = new();
     [SerializeField]
-    public List<GameObject> EnvironmentPlatforms = new();
+    private List<GameObject> EnvironmentPlatforms = new();
 
     public static float gameSpeed;
-
+    public static int GameEnvironment;
     public bool spawn;
     public bool spawnSpawnable;
     public bool IsAlive;
@@ -23,7 +23,7 @@ public class LevelGenerator : MonoBehaviour
         while (IsAlive)
         {
             int rand2;
-            if (ChangeEnviroment.GameEnviroment != 7)
+            if (GameEnvironment != 7)
             {
                 rand2 = Random.Range(0, 3);
             }
@@ -33,7 +33,7 @@ public class LevelGenerator : MonoBehaviour
             }
             int rand = Random.Range(0, spawnableObjects.Count);
             ObjectPoolManager.SpawnObject(spawnableObjects[rand], spawnPositions[rand2], Quaternion.Euler(0, 180f, 0));
-            yield return new WaitForSecondsRealtime(2);
+            yield return new WaitForSeconds(2);
         }
     }
 
@@ -47,7 +47,7 @@ public class LevelGenerator : MonoBehaviour
     private Vector3 startPos = new(0f, -0.2f, 450f);
     private void Start()
     {
-        gameSpeed = 55;
+        gameSpeed = 10;
         IsAlive = true;
         StartCoroutine(SpawnablesGenerator());
         StartCoroutine(GameSpeedUpdate());
@@ -99,7 +99,6 @@ public class LevelGenerator : MonoBehaviour
     }
     private void PlayerDeath()
     {
-        Debug.Log("Umrea");
         gameObject.GetComponent<BoxCollider>().enabled = false;
         GeneratorOn = false;
         IsAlive = false;
@@ -129,6 +128,7 @@ public class LevelGenerator : MonoBehaviour
     // slusa transformers event
     private void EnvironemntListener(int Id)
     {
+        GameEnvironment = Id;
         // proverava koji je tip environmenta
         // od 1 do 6 ukljucuje generator
         if (Id != 7)
@@ -150,7 +150,7 @@ public class LevelGenerator : MonoBehaviour
         {
 
             yield return new WaitForSecondsRealtime(1);
-            if (gameSpeed < 60)
+            if (gameSpeed < 150)
             {
                 gameSpeed += 0.5f;
             }
