@@ -12,8 +12,8 @@ public class CameraMove : MonoBehaviour
         //ako se mrda panel mora se menjati ovo
         if (target.CompareTag("Settings"))
         {
-            transform.DOMove(new Vector3(2, 2, -7.8f), duration); 
-            transform.DORotate(new Vector3(0,-50,0), duration);
+            transform.DOMove(new Vector3(3.261f, 2.06f, -9.595f), duration); 
+            transform.DORotate(new Vector3(0,-90,0), duration);
         }
         else if (target.CompareTag("Shop"))
         {
@@ -23,8 +23,7 @@ public class CameraMove : MonoBehaviour
         if (target.CompareTag("MainMenu"))
         {
             transform.DOMove(new Vector3(6.945f, 2.043f, -6.309f), duration); 
-            transform.DORotate(new Vector3(10, -60, 0), duration);
-            
+            transform.DORotate(new Vector3(10, -60, 0), duration);           
         }
     }
 }
