@@ -28,11 +28,11 @@ public class MainMenuManager : MonoBehaviour
 
         if (AudioManager.Instance.musicSource.mute)
         {
-            MusicButtonText.text = "Music OFF"; 
+            MusicButtonText.text = "OFF"; 
         }
         else
         {
-            MusicButtonText.text = "Music ON";
+            MusicButtonText.text = "ON";
         }
     }
 }
