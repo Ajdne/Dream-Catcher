@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.018689651, g: 0.015532842, b: 0.050857753, a: 1}
+  m_IndirectSpecularColor: {r: 0.0189391, g: 0.015620527, b: 0.05083309, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1323,7 +1323,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 83.33667, y: -247.32153}
+  m_AnchoredPosition: {x: 83.33667, y: -171.99982}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &765035268
@@ -1595,7 +1595,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -73.92767, y: -171.2096}
+  m_AnchoredPosition: {x: -73.92767, y: -69}
   m_SizeDelta: {x: 450, y: 150}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &822571178
@@ -2779,7 +2779,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 3
+  m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -3063,6 +3063,20 @@ MonoBehaviour:
   - {fileID: 6243528946387359886, guid: ce2fb33476466d443845dfadbd04b140, type: 3}
   EnvironmentPlatforms:
   - {fileID: 1584003374224120139, guid: 8a20450613920844ea6b22d700d90a04, type: 3}
+  - {fileID: 2198265317769366376, guid: fd76680e3eede504ca1285f46b972812, type: 3}
+  - {fileID: 2474533607023360661, guid: 8febe2dbac12a0741acd0f788121c4c7, type: 3}
+  - {fileID: 2257420602430213539, guid: c453c0cae09f8aa478e3ff718aaef00a, type: 3}
+  - {fileID: 1184087829498623138, guid: e1604c643f5e7b242bc2a5ac8ab4fb33, type: 3}
+  - {fileID: 1184087829498623138, guid: 69e0d1b7dc9e1544084f0fefa0587162, type: 3}
+  - {fileID: 3284400534943892710, guid: 0dcc98fcfe60ce9419abe87660eeaaf5, type: 3}
+  - {fileID: 3266310323227542640, guid: 742c6b2e4d522b64a8b3e1bda4f932ed, type: 3}
+  - {fileID: 479369426609336294, guid: 1ce18a92acb30fa46ae27e7d8727cb26, type: 3}
+  - {fileID: 1760411085570338476, guid: a40a6a3d3b0d4124181c6a7a906aafc6, type: 3}
+  - {fileID: 2839138102202540231, guid: b1fb0a50bb7a22a4fbca914c038ef306, type: 3}
+  - {fileID: 1729293272244372257, guid: 740981bd76acf9945a83191eaf803860, type: 3}
+  - {fileID: 6251887074585031596, guid: a491fb4b1e324524d877ece1452ab70a, type: 3}
+  - {fileID: 608011624690189555, guid: dcd842c0f7f1b0b4ab1c4bc3ad1e3d5a, type: 3}
+  - {fileID: 170613353522930852, guid: 838d3088fe6ce66429e6c69366054852, type: 3}
   spawn: 0
   spawnSpawnable: 0
   IsAlive: 0
@@ -3172,7 +3186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 83.33667, y: -316.07867}
+  m_AnchoredPosition: {x: 83.33667, y: -245}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1580214898
@@ -4118,7 +4132,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 83.33667, y: -178.60217}
+  m_AnchoredPosition: {x: 83.33685, y: -91}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2145310427

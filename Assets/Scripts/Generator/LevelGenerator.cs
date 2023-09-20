@@ -62,7 +62,8 @@ public class LevelGenerator : MonoBehaviour
             {
                 EnvironmentCounter++;
                 Debug.Log("Stvaranje broj " + EnvironmentCounter);
-                GameObject platform = ObjectPoolManager.SpawnObject(EnvironmentPlatforms[0], startPos, Quaternion.identity);
+                int rand = Random.Range(0, 15);
+                GameObject platform = ObjectPoolManager.SpawnObject(EnvironmentPlatforms[rand], startPos, Quaternion.identity);
                 //platform.GetComponent<EnvironmentMoverUp>().enabled = false;
                 platform.GetComponent<EnvironmentMover>().enabled = true;
                 platform.GetComponent<BoxCollider>().enabled = true;
@@ -88,7 +89,7 @@ public class LevelGenerator : MonoBehaviour
         pozicije[3] = new(0, -200, 300);
         for (int i = 0; i < pozicije.Length; i++)
         {
-            GameObject platform = ObjectPoolManager.SpawnObject(EnvironmentPlatforms[0], pozicije[i], Quaternion.identity);
+            GameObject platform = ObjectPoolManager.SpawnObject(EnvironmentPlatforms[GameEnvironment], pozicije[i], Quaternion.identity);
             platform.GetComponent<EnvironmentMoverUp>().enabled = true;
             //platform.GetComponent<EnvironmentMover>().enabled = false;
             if (i == 0)
