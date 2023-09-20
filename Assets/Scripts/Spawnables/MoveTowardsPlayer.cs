@@ -25,8 +25,7 @@ public class MoveTowardsPlayer : MonoBehaviour
         {
             speed = 0.33f;
             endPos = new(_transform.position.x, 10, 0);
-        }
-        
+        }        
     }
     private void Update()
     {

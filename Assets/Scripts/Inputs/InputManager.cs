@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
-    public static InputManager Instance;
+    /*public static InputManager Instance;
 
     public Button LeftButton;
     public Button RightButton;
@@ -52,5 +52,5 @@ public class InputManager : MonoBehaviour
             RightButton.gameObject.SetActive(false);
             InputType = true;
         }
-    } 
+    } */
 }

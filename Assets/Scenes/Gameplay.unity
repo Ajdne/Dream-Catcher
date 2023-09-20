@@ -356,6 +356,21 @@ MonoBehaviour:
   GameSpeed: {fileID: 1580214898}
   FinalScore: {fileID: 1340796037}
   LaneDistance: {fileID: 1244353356}
+<<<<<<< Updated upstream
+=======
+--- !u!114 &108738101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108738098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1932aaa05b1cde4e9c3de1f9ce7db26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> Stashed changes
 --- !u!1 &109149070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,7 +1584,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: 83.33667, y: -215}
+=======
+  m_AnchoredPosition: {x: 83.33667, y: -160.00006}
+>>>>>>> Stashed changes
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &765035268
@@ -1975,7 +1994,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -73.92767, y: -142.00006}
+=======
+  m_AnchoredPosition: {x: -73.92767, y: -89.00012}
+>>>>>>> Stashed changes
   m_SizeDelta: {x: 450, y: 150}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &822571178
@@ -2072,18 +2095,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822571176}
   m_CullTransparentMesh: 1
---- !u!114 &899630409 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6567578412083222899, guid: a520f9e61b1950e47a7ba1ad3f6517b7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1369017422788384427}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 578935670}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1fc8e78d89e514c8c1a6e6941ac9cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &904236898
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,7 +2357,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 899630409}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TapInput, Assembly-CSharp
         m_MethodName: MoveLaneLeft
         m_Mode: 1
@@ -3441,7 +3452,7 @@ MonoBehaviour:
   - {fileID: 2174345130461600067, guid: 5687b2800fc33484889cd1aa018af5bd, type: 3}
   - {fileID: 2353270408577773064, guid: f5288ee75f224514ca73a313efa2d7d0, type: 3}
   - {fileID: 6243528946387359886, guid: 92e8e0c172d4f9242b2a656e14a6c08b, type: 3}
-  - {fileID: 6243528946387359886, guid: ce2fb33476466d443845dfadbd04b140, type: 3}
+  - {fileID: 7759713516053243368, guid: 636add88a64b98b43a5bb3509fb05209, type: 3}
   EnvironmentPlatforms:
   - {fileID: 1584003374224120139, guid: 8a20450613920844ea6b22d700d90a04, type: 3}
   - {fileID: 2198265317769366376, guid: fd76680e3eede504ca1285f46b972812, type: 3}
@@ -3468,6 +3479,13 @@ MonoBehaviour:
   - {x: -2, y: -50, z: 0}
   - {x: 0, y: -50, z: 0}
   - {x: 2, y: -50, z: 0}
+  spawnProbabilities:
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.5
   GeneratorOn: 0
 --- !u!4 &1570635110
 Transform:
@@ -3567,7 +3585,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: 83.33667, y: -289}
+=======
+  m_AnchoredPosition: {x: 83.33667, y: -237.00006}
+>>>>>>> Stashed changes
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1580214898
@@ -4397,7 +4419,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 108738100}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: PlayerDeath
+        m_MethodName: PlayAgain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4566,7 +4588,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 899630409}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TapInput, Assembly-CSharp
         m_MethodName: MoveLaneRight
         m_Mode: 1
@@ -4651,7 +4673,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: 83.33685, y: -142}
+=======
+  m_AnchoredPosition: {x: 83.33685, y: -89}
+>>>>>>> Stashed changes
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2145310427
@@ -4842,7 +4868,7 @@ PrefabInstance:
     - target: {fileID: 6567578412083222899, guid: a520f9e61b1950e47a7ba1ad3f6517b7,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8344691907106380693, guid: a520f9e61b1950e47a7ba1ad3f6517b7,
         type: 3}
@@ -4861,6 +4887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8962529926904266303, guid: a520f9e61b1950e47a7ba1ad3f6517b7, type: 3}
+    - {fileID: 6567578412083222899, guid: a520f9e61b1950e47a7ba1ad3f6517b7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
