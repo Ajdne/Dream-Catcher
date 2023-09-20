@@ -36,19 +36,47 @@ public class LevelGenerator : MonoBehaviour
             yield return new WaitForSeconds(2);
         }
     }
-
+   private int GetEnvironment()
+   {
+        int rand;
+        switch (GameEnvironment)
+        {
+            case 7:
+                //vazduh (bira za platforme dole)
+                return rand = Random.Range(0,3);
+            case 6:
+                //town (jos uvek nije implementiran)
+                return rand = Random.Range(0, 3);
+            case 5:
+                //shroom
+                return rand = Random.Range(12, 15);
+            case 4:
+                //sea
+                return rand = Random.Range(9, 12);
+            case 3:
+                //polar
+                return rand = Random.Range(6, 9);
+            case 2:
+                //desert
+                return rand = Random.Range(3, 6);
+            default:
+                //countryside
+                return rand = Random.Range(0, 3);
+        }
+   }
     private void Awake()
     {
         Instance = this;
         spawn = false;
     }
-    public static int EnvironmentCounter = 0;
+    public static int EnvironmentCounter;
     public bool GeneratorOn;
     private Vector3 startPos = new(0f, -0.2f, 450f);
     private void Start()
     {
         gameSpeed = 10;
         IsAlive = true;
+        EventManager.StartEnvironmentTransformEvent(7);
         StartCoroutine(SpawnablesGenerator());
         StartCoroutine(GameSpeedUpdate());
     }
@@ -62,7 +90,7 @@ public class LevelGenerator : MonoBehaviour
             {
                 EnvironmentCounter++;
                 Debug.Log("Stvaranje broj " + EnvironmentCounter);
-                int rand = Random.Range(0, 15);
+                int rand = GetEnvironment();
                 GameObject platform = ObjectPoolManager.SpawnObject(EnvironmentPlatforms[rand], startPos, Quaternion.identity);
                 //platform.GetComponent<EnvironmentMoverUp>().enabled = false;
                 platform.GetComponent<EnvironmentMover>().enabled = true;
@@ -89,9 +117,9 @@ public class LevelGenerator : MonoBehaviour
         pozicije[3] = new(0, -200, 300);
         for (int i = 0; i < pozicije.Length; i++)
         {
-            GameObject platform = ObjectPoolManager.SpawnObject(EnvironmentPlatforms[GameEnvironment], pozicije[i], Quaternion.identity);
+            int rand = GetEnvironment();
+            GameObject platform = ObjectPoolManager.SpawnObject(EnvironmentPlatforms[rand], pozicije[i], Quaternion.identity);
             platform.GetComponent<EnvironmentMoverUp>().enabled = true;
-            //platform.GetComponent<EnvironmentMover>().enabled = false;
             if (i == 0)
             {
                 platform.transform.Find("Trigger1").gameObject.SetActive(true);

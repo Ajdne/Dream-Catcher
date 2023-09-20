@@ -1588,7 +1588,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 83.33667, y: -171.99982}
+  m_AnchoredPosition: {x: 83.33667, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &765035268
@@ -1994,7 +1994,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -73.92767, y: -69}
+  m_AnchoredPosition: {x: -73.92767, y: 0}
   m_SizeDelta: {x: 450, y: 150}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &822571178
@@ -3855,7 +3855,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 83.33667, y: -245}
+  m_AnchoredPosition: {x: 83.33667, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1580214898
@@ -3972,6 +3972,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Countryside0(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584003374224120139, guid: 8a20450613920844ea6b22d700d90a04,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2313748306571509282, guid: 8a20450613920844ea6b22d700d90a04,
         type: 3}
@@ -4935,7 +4940,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 83.33685, y: -91}
+  m_AnchoredPosition: {x: 83.33685, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2145310427
