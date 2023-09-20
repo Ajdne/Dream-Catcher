@@ -37,14 +37,14 @@ public class CameraMotor : MonoBehaviour
             _Camera.DOShakePosition(0.5f, _positionStrenght);
             _Camera.DOShakeRotation(0.5f, _rotationStrenght);
             _Camera.transform.rotation = Quaternion.Euler(5, 0, 0);
-            offset = new(0, 4f, -7f);
+            offset = new(0, 6f, -10f);
         }
         else if (Id == 7)
         {
             _Camera.DOComplete();
             _Camera.DOShakePosition(0.5f, _positionStrenght);
             _Camera.DOShakeRotation(0.5f, _rotationStrenght);
-            _Camera.transform.rotation = Quaternion.Euler(42, 0, 0);
+            _Camera.transform.rotation = Quaternion.Euler(35, 0, 0);
             offset = new(0, 4f, -10f);
         }
     }

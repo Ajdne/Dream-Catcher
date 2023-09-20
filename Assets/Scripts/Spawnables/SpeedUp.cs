@@ -9,14 +9,10 @@ public class SpeedUp : MonoBehaviour
     {
         if (other.CompareTag("Player") && MultiplierCounter < 3)
         {
-            Player.Instance.Score += 1;
             LevelGenerator.gameSpeed *= 1.3f;
             MultiplierCounter++;
         }
-        if(other.CompareTag("Player") && MultiplierCounter >= 3)
-        {
-            Player.Instance.Score += 2;
-        }
+        Player.Instance.Score += 2;
         ObjectPoolManager.ReturnObject(gameObject);
     }
 }
