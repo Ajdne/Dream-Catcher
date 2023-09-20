@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MenuScene/MenuNormalColor.unity
+    path: Assets/Scenes/MenuNormalColor.unity
     guid: dbb5b36bf093a3b4f9e97c5cc3a57bf6
   - enabled: 1
     path: Assets/Scenes/Gameplay.unity

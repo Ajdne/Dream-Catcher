@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     private TMP_Text GameSpeed;
     [SerializeField]
     private TMP_Text FinalScore;
+    [SerializeField]
+    private TMP_Text LaneDistance;
     private void Awake()
     {
         Instance = this;
@@ -26,6 +28,7 @@ public class UIManager : MonoBehaviour
         PlayerHealth.text = "Hearts: "+Player.Instance.Health.ToString();
         PlayerScore.text = "Score: "+Player.Instance.Score.ToString();
         GameSpeed.text = "Speed: " + LevelGenerator.gameSpeed.ToString("F1");
+        LaneDistance.text = "LaneDistance: " + TapInput.LANE_DISTANCE;
     }
 
     // Update is called once per frame
@@ -70,6 +73,19 @@ public class UIManager : MonoBehaviour
         transform.Find("InGameUI").gameObject.SetActive(false);
         transform.Find("DeathPanel").gameObject.SetActive(true);
         FinalScore.text = "Sheep counted: " + Player.Instance.Score.ToString();
+    }
+
+    public void PlusDistance()
+    {
+        TapInput.LANE_DISTANCE += 0.5f;
+        LaneDistance.text = "Lane Distance: " + TapInput.LANE_DISTANCE;
+        Debug.Log(TapInput.LANE_DISTANCE);
+    }
+    public void MinusDistance()
+    {
+        TapInput.LANE_DISTANCE -= 0.5f;
+        LaneDistance.text = "Lane Distance: " + TapInput.LANE_DISTANCE;
+        Debug.Log(TapInput.LANE_DISTANCE);
     }
     private void OnEnable()
     {

@@ -20,6 +20,16 @@ namespace Assets.Scripts.Inputs
         }
         private void Update()
         {
+            if (transform.position.x <= -2f)
+            {
+                transform.position = new Vector3(-2f, 0, 0);
+            }
+
+            if (transform.position.x >= 2f)
+            {
+                transform.position = new Vector3(2f, 0, 0);
+            }
+
             float swerveAmount = Time.deltaTime * swerveSpeed *  _input.MoveFactorX;
             swerveAmount = Mathf.Clamp(swerveAmount,-maxSwerveAmount, maxSwerveAmount);
             transform.Translate(swerveAmount, 0, 0);

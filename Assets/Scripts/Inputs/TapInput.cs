@@ -6,7 +6,7 @@ using UnityEngine;
 public class TapInput : MonoBehaviour
 {
     //https://www.youtube.com/watch?v=C9qoYdslLcg
-    private const float LANE_DISTANCE = 2.0f;
+    public static float LANE_DISTANCE = 2.0f;
     private CharacterController characterController;
     private int desiredLane = 1; //0 = left, 1 = middle, 2= right
     private float speed = 7.0f;

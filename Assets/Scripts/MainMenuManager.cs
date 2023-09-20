@@ -2,10 +2,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject _fadePanel;
+
+    [SerializeField] private Text MusicButtonText;
     public void Dream()
     {
         _fadePanel.SetActive(true);
@@ -20,6 +23,16 @@ public class MainMenuManager : MonoBehaviour
 
     public void MusicOnOff()
     {
-        //TODO
+        AudioManager.Instance.MuteUnmuteMusic();
+        AudioManager.Instance.MuteUnmuteSFX();
+
+        if (AudioManager.Instance.musicSource.mute)
+        {
+            MusicButtonText.text = "Music OFF"; 
+        }
+        else
+        {
+            MusicButtonText.text = "Music ON";
+        }
     }
 }
