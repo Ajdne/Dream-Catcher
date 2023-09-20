@@ -17,8 +17,8 @@ public class CameraMove : MonoBehaviour
         }
         else if (target.CompareTag("Shop"))
         {
-            transform.DOMove(new Vector3(3.26f, 2.06f, -5.96f), duration); 
-            transform.DORotate(new Vector3(0, -90, 0), duration);
+            transform.DOMove(new Vector3(5.6f, 1.8f, -7.18f), duration); 
+            transform.DORotate(new Vector3(0, 50, 0), duration);
         }
         if (target.CompareTag("MainMenu"))
         {

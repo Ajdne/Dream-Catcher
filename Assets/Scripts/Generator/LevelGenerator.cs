@@ -18,32 +18,6 @@ public class LevelGenerator : MonoBehaviour
 
     [SerializeField]
     private List<Vector3> spawnPositions = new();
-    public List<float> spawnProbabilities; // Probabilities corresponding to each prefab
-
-    public GameObject SelectSpawnable()
-    {
-        if (spawnableObjects.Count != spawnProbabilities.Count || spawnProbabilities.Count == 0)
-        {
-            Debug.LogError("Prefab array length doesn't match spawn probabilities array length, or probabilities array is empty.");
-            return null;
-        }
-
-        float randomValue = Random.value; // Generate a random value between 0 and 1
-        float cumulativeProbability = 0f;
-
-        for (int i = 0; i < spawnableObjects.Count; i++)
-        {
-            cumulativeProbability += spawnProbabilities[i];
-
-            if (randomValue <= cumulativeProbability)
-            {
-                // Instantiate the selected prefab
-                //return spawnable
-                return spawnableObjects[i];
-            }
-        }
-        return null;
-    }
     IEnumerator SpawnablesGenerator()
     {
         while (IsAlive)
@@ -100,7 +74,7 @@ public class LevelGenerator : MonoBehaviour
     private Vector3 startPos = new(0f, -0.2f, 450f);
     private void Start()
     {
-        gameSpeed = 15;
+        gameSpeed = 10;
         IsAlive = true;
         EventManager.StartEnvironmentTransformEvent(7);
         StartCoroutine(SpawnablesGenerator());
