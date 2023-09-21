@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
     }
     public void MainMenu()
     {
-        SceneManager.LoadScene("MenuNormalColor");
+        SceneManager.LoadScene("MainMenu");
     }
     public void PlayAgain()
     {
