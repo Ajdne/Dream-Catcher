@@ -29,6 +29,12 @@ public class CameraMotor : MonoBehaviour
         Vector3 desiredPosition = lookAt.position + offset;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime*3);
     }
+    public void CameraShake()
+    {
+        _Camera.DOComplete();
+        _Camera.DOShakePosition(0.3f, _positionStrenght);
+        _Camera.DOShakeRotation(0.3f, _rotationStrenght);
+    }
     public void EnvironmentListener(int Id)
     {
         if (Id != 7)

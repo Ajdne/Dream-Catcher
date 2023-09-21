@@ -10,6 +10,7 @@ public class HealthDown : MonoBehaviour
         {
             if (Player.Instance.Health >= 1)
             {
+                CameraMotor.Instance.CameraShake();
                 Player.Instance.Health -= 1;
             }
             ObjectPoolManager.ReturnObject(gameObject);

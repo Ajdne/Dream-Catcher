@@ -19,8 +19,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private List<Vector3> spawnPositions = new();
     public List<float> spawnProbabilities; // Probabilities corresponding to each prefab
-
-    public GameObject SelectSpawnable()
+    public GameObject SkyBlock;
+    /*public GameObject SelectSpawnable()
     {
         if (spawnableObjects.Count != spawnProbabilities.Count || spawnProbabilities.Count == 0)
         {
@@ -43,26 +43,31 @@ public class LevelGenerator : MonoBehaviour
             }
         }
         return null;
-    }
-    IEnumerator SpawnablesGenerator()
+    }*/
+    public GameObject SelectSpawnable()
     {
-        while (IsAlive)
+        if (spawnableObjects == null || spawnProbabilities == null ||
+            spawnableObjects.Count != spawnProbabilities.Count || spawnProbabilities.Count == 0)
         {
-            int rand2;
-            if (GameEnvironment != 7)
-            {
-                rand2 = Random.Range(0, 3);
-            }
-            else
-            {
-                rand2 = Random.Range(3, spawnPositions.Count);
-            }
-            int rand = Random.Range(0, spawnableObjects.Count);
-            ObjectPoolManager.SpawnObject(spawnableObjects[rand], spawnPositions[rand2], Quaternion.Euler(0, 180f, 0));
-            yield return new WaitForSeconds(2);
+            throw new System.Exception("Invalid input for SelectSpawnable function.");
         }
+
+        float randomValue = Random.value;
+        float cumulativeProbability = 0f;
+
+        for (int i = 0; i < spawnableObjects.Count; i++)
+        {
+            cumulativeProbability += spawnProbabilities[i];
+
+            if (randomValue <= cumulativeProbability)
+            {
+                return spawnableObjects[i];
+            }
+        }
+
+        throw new System.Exception("No spawnable object selected. Check probabilities.");
     }
-   private int GetEnvironment()
+    private int GetEnvironment()
    {
         int rand;
         switch (GameEnvironment)
@@ -93,17 +98,18 @@ public class LevelGenerator : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        spawn = false;
     }
     public static int EnvironmentCounter;
     public bool GeneratorOn;
     private Vector3 startPos = new(0f, -0.2f, 450f);
     private void Start()
     {
-        gameSpeed = 15;
+        Time.timeScale = 1;
         IsAlive = true;
+        spawn = false;
+        GeneratorOn = false;
+        gameSpeed = 15;
         EventManager.StartEnvironmentTransformEvent(7);
-        StartCoroutine(SpawnablesGenerator());
         StartCoroutine(GameSpeedUpdate());
     }
     private void Update()
@@ -115,7 +121,6 @@ public class LevelGenerator : MonoBehaviour
             if (spawn)
             {
                 EnvironmentCounter++;
-                Debug.Log("Stvaranje broj " + EnvironmentCounter);
                 int rand = GetEnvironment();
                 GameObject platform = ObjectPoolManager.SpawnObject(EnvironmentPlatforms[rand], startPos, Quaternion.identity);
                 //platform.GetComponent<EnvironmentMoverUp>().enabled = false;
@@ -130,7 +135,6 @@ public class LevelGenerator : MonoBehaviour
                 }
 
                 spawn = false;
-                Debug.Log("Spawn false");
             }
         }
     }
@@ -151,6 +155,7 @@ public class LevelGenerator : MonoBehaviour
                 platform.transform.Find("Trigger1").gameObject.SetActive(true);
             }
         }
+        GameObject skyBlock = ObjectPoolManager.SpawnObject(SkyBlock, new Vector3(0, -165, 0), Quaternion.identity);
     }
     private void PlayerDeath()
     {
@@ -176,7 +181,6 @@ public class LevelGenerator : MonoBehaviour
     {
         if (other.CompareTag("Environment"))
         {
-            Debug.Log("Spawn true");
             spawn = true;
         }
     }
@@ -189,13 +193,10 @@ public class LevelGenerator : MonoBehaviour
         if (Id != 7)
         {
             GeneratorOn = true;
-            Debug.Log("Startuj envi gen");
-            return;
         }
         else // ako je 7 iskljucuje generator i stvara veliku platformu dole
         {
             GeneratorOn = false;
-            Debug.Log("Iskljuci envi gen");
             SpawnStartPlatform();
         }
     }
@@ -203,11 +204,10 @@ public class LevelGenerator : MonoBehaviour
     {
         while(IsAlive)
         {
-
             yield return new WaitForSecondsRealtime(1);
-            if (gameSpeed < 150)
+            if (gameSpeed < 100)
             {
-                gameSpeed += 0.5f;
+                gameSpeed += 0.25f;
             }
         }
     }
