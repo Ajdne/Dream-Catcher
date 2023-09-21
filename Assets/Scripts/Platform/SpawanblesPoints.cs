@@ -5,20 +5,29 @@ using UnityEngine;
 public class SpawanblesPoints : MonoBehaviour
 {
     public GameObject Points;
+    private Transform pointsTransform;
+    private Vector3 rotationEuler = new(0, 180, 0);
 
     private void OnEnable()
     {
         // Get a reference to the parent GameObject's Transform component
-        Transform parentTransform = Points.transform; // 'transform' refers to the Transform of the script's GameObject
+        pointsTransform = Points.transform;
 
-        // Loop through all the children of the parent GameObject
-        for (int i = 0; i < parentTransform.childCount; i++)
+        foreach (Transform pointTransform in pointsTransform)
         {
-            // Get a reference to each child Transform
-            Transform childTransform = parentTransform.GetChild(i);
             GameObject objectToSpawn = (GameObject)LevelGenerator.Instance.SelectSpawnable();
-            GameObject spawnedObject = ObjectPoolManager.SpawnObject(objectToSpawn, childTransform.position, Quaternion.Euler(0, 180, 0));
-            spawnedObject.transform.SetParent(transform);
+            GameObject spawnedObject = ObjectPoolManager.SpawnObject(objectToSpawn, pointTransform.position, Quaternion.Euler(rotationEuler));
+            spawnedObject.transform.SetParent(pointTransform);
+        }
+    }
+    private void OnDisable()
+    {
+        foreach (Transform pointTransform in pointsTransform)
+        {
+            if (pointTransform.childCount > 0 && pointTransform.GetChild(0).gameObject.activeSelf)
+            {
+                ObjectPoolManager.ReturnObject(pointTransform.GetChild(0).gameObject);
+            }
         }
     }
 }
