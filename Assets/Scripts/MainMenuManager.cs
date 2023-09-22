@@ -85,4 +85,9 @@ public class MainMenuManager : MonoBehaviour
             ShopIsClosed = true;
         }
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
