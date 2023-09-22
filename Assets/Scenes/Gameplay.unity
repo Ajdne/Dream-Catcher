@@ -3389,8 +3389,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119c1e79212108340b31c96a083a380b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _positionStrenght: {x: 0, y: 5, z: 5}
-  _rotationStrenght: {x: 0, y: 5, z: 5}
+  _FallpositionStrenght: {x: 0, y: 3, z: 0}
+  _FallrotationStrenght: {x: 0, y: 3, z: 0}
+  _LandpositionStrenght: {x: 0, y: 5, z: 5}
+  _LandrotationStrenght: {x: 0, y: 5, z: 5}
+  _HitpositionStrenght: {x: 0, y: 2, z: 2}
+  _HitrotationStrenght: {x: 0, y: 2, z: 2}
   lookAt: {fileID: 1369017422788384428}
 --- !u!1 &1570635108
 GameObject:

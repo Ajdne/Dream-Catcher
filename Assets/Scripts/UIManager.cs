@@ -73,6 +73,7 @@ public class UIManager : MonoBehaviour
         transform.Find("InGameUI").gameObject.SetActive(false);
         transform.Find("DeathPanel").gameObject.SetActive(true);
         FinalScore.text = "Sheep counted: " + Player.Instance.Score.ToString();
+        GameManager.Instance.SaveGame(Player.Instance.Score);
     }
 
     public void PlusDistance()

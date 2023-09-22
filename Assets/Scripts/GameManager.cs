@@ -15,9 +15,9 @@ public class GameManager : MonoBehaviour
     {
         LoadGame();
     }
-    private void SaveGame()
+    public void SaveGame(int sheep)
     {
-        PlayerPrefs.SetInt("Sheep", Sheep);
+        PlayerPrefs.SetInt("Sheep", Sheep+sheep);
     }
     private void LoadGame()
     {
