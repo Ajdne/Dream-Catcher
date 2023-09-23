@@ -10,6 +10,11 @@ public class EventManager : MonoBehaviour
     public static event Action ObstacleHit;
     public static event Action<int> Sheep;
     public static event Action Camera;
+    public static event Action UpdateGUI;
+    public static void StartUpdateGUI()
+    {
+        UpdateGUI?.Invoke();
+    }
     public static void StartCamera()
     {
         Camera?.Invoke();

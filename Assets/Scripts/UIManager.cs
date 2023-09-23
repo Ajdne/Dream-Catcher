@@ -107,24 +107,20 @@ public class UIManager : MonoBehaviour
             Heart3.SetActive(false);
         }
     }
-    private void ScoreController(int Id)
+    private void ScoreController()
     {
-        if(Id == 2)
-        {
-            HeartsController();
-        }
         PlayerScore.text = "" + Player.Instance.Score.ToString();
     }
     private void OnEnable()
     {
         EventManager.PlayerDeath += PlayerDeath;
-        EventManager.ObstacleHit += HeartsController;
-        EventManager.Sheep += ScoreController;
+        EventManager.UpdateGUI += HeartsController;
+        EventManager.UpdateGUI += ScoreController;
     }
     private void OnDisable()
     {
         EventManager.PlayerDeath -= PlayerDeath;
-        EventManager.ObstacleHit -= HeartsController;
-        EventManager.Sheep -= ScoreController;
+        EventManager.UpdateGUI -= HeartsController;
+        EventManager.UpdateGUI -= ScoreController;
     }
 }

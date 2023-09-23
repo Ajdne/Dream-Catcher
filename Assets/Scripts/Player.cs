@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
             if (Health == 0)
                 EventManager.StartPlayerDeath();
         }
+        EventManager.StartUpdateGUI();
     }
     private void SheepCollect(int Id)
     {
@@ -56,6 +57,7 @@ public class Player : MonoBehaviour
                 MultiplierCounter++;
             }
         }
+        EventManager.StartUpdateGUI();
     }
     private void Start()
     {

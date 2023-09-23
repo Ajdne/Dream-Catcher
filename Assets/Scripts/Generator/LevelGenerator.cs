@@ -84,7 +84,7 @@ public class LevelGenerator : MonoBehaviour
                 platform.GetComponent<BoxCollider>().enabled = true;
                 if (EnvironmentCounter == EnvironmentCounterLimit) //ukljucuje capsule colider na platformi i gasi corutinu
                 {
-                    EnvironmentCounter = Random.Range(3,7);
+                    EnvironmentCounter = 0;
                     platform.transform.Find("Trigger2").gameObject.SetActive(true);
                     platform.GetComponent<BoxCollider>().enabled = false;
                 }
@@ -140,6 +140,7 @@ public class LevelGenerator : MonoBehaviour
     private void EnvironemntListener(int Id)
     {
         GameEnvironment = Id;
+        EnvironmentCounterLimit = Random.Range(3, 7);
         SpawnStartPlatform();
     }
     IEnumerator GameSpeedUpdate()
