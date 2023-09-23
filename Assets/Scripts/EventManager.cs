@@ -7,6 +7,21 @@ public class EventManager : MonoBehaviour
 {
     public static event Action<int> EnvironmentTransformEvent;
     public static event Action PlayerDeath;
+    public static event Action ObstacleHit;
+    public static event Action<int> Sheep;
+    public static event Action Camera;
+    public static void StartCamera()
+    {
+        Camera?.Invoke();
+    }
+    public static void StartSheep(int Id)
+    {
+        Sheep?.Invoke(Id);
+    }
+    public static void StartObstacleHit()
+    {
+        ObstacleHit?.Invoke();
+    }
     public static void StartEnvironmentTransformEvent(int eventID)
     {
         Debug.Log("Enviroment ID: " + eventID);

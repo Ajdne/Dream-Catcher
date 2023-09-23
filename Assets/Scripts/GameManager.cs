@@ -9,18 +9,31 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
     }
+    private void OnEnable()
+    {
+        EventManager.PlayerDeath += PlayerDeath;
+    }
+    private void OnDisable()
+    {
+        EventManager.PlayerDeath -= PlayerDeath;
+    }
     public int Sheep;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         LoadGame();
     }
-    public void SaveGame(int sheep)
+    public void SaveGame()
     {
-        PlayerPrefs.SetInt("Sheep", Sheep+sheep);
+        PlayerPrefs.SetInt("Sheep", Sheep);
     }
     private void LoadGame()
     {
         Sheep = PlayerPrefs.GetInt("Sheep", 0);
+    }
+    private void PlayerDeath()
+    {
+        Sheep += Player.Instance.Health;
+        SaveGame();
     }
 }

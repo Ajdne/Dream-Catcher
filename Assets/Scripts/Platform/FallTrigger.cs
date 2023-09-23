@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreUp : MonoBehaviour
+public class FallTrigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-
-            Player.Instance.Score += 1;
-            ObjectPoolManager.ReturnObject(gameObject);
+            EventManager.StartCamera();
+            int rand = Random.Range(1, 7);
+            EventManager.StartEnvironmentTransformEvent(rand);
         }
     }
 }

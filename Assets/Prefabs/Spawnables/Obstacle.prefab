@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1887367700492668963}
   - component: {fileID: 4816385730907866202}
-  - component: {fileID: 4109002687569568655}
-  - component: {fileID: 1135999492368557678}
+  - component: {fileID: 6387440837823032247}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Obstacle
@@ -56,7 +55,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.8
   m_Center: {x: 0, y: 0.58138716, z: 0}
---- !u!114 &4109002687569568655
+--- !u!114 &6387440837823032247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,19 +64,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6243528946387359886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bb9d97f4d253de4cbf09e016cbbfeb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1135999492368557678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6243528946387359886}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4497d4f3d4605804e9c67f3592bf54d0, type: 3}
+  m_Script: {fileID: 11500000, guid: f4139f8d9b903064eb0602b101c99acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &3690887894032289955

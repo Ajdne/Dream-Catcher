@@ -95,15 +95,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6e07bf78d8c20349b663d19dafa1906,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3663}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6e07bf78d8c20349b663d19dafa1906,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3719}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6e07bf78d8c20349b663d19dafa1906,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3648}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6e07bf78d8c20349b663d19dafa1906,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4677980895254813563}
   m_SourcePrefab: {fileID: 100100000, guid: f6e07bf78d8c20349b663d19dafa1906, type: 3}
 --- !u!1 &2174345130461600067 stripped
 GameObject:
@@ -111,30 +107,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1363951534291723282}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2174345130461600067}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4497d4f3d4605804e9c67f3592bf54d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2174345130461600067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f4c954fd28e08b489d35f17b86c29ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &3648
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -156,3 +128,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.67992496
   m_Center: {x: -0.005410537, y: 0.4979751, z: -0.04318413}
+--- !u!114 &4677980895254813563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2174345130461600067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06be3ed4f5fb3eb47a639fa66639b16b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthUp: 1
+  SpeedUp: 0
+  ScoreUp: 0

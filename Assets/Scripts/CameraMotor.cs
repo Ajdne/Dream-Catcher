@@ -7,11 +7,13 @@ public class CameraMotor : MonoBehaviour
 {
     public static CameraMotor Instance;
     private Camera _Camera;
-
+    // fall
     [SerializeField] private Vector3 _FallpositionStrenght;
     [SerializeField] private Vector3 _FallrotationStrenght;
+    // land
     [SerializeField] private Vector3 _LandpositionStrenght;
     [SerializeField] private Vector3 _LandrotationStrenght;
+    // hit
     [SerializeField] private Vector3 _HitpositionStrenght;
     [SerializeField] private Vector3 _HitrotationStrenght;
     // object we are looking at
@@ -20,12 +22,12 @@ public class CameraMotor : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        _Camera = GetComponent<Camera>();
     }
     private void Start()
     {
-        _Camera = GetComponent<Camera>();
-        _Camera.transform.rotation = Quaternion.Euler(5, 0, 0);
-        offset = new(0, 4f, -7f);
+        _Camera.transform.rotation = Quaternion.Euler(35, 0, 0);
+        offset = new(0, 5f, -10f);
         transform.position = lookAt.position + offset;
     }
     private void Update()
@@ -51,27 +53,32 @@ public class CameraMotor : MonoBehaviour
         _Camera.DOShakePosition(0.3f, _HitpositionStrenght);
         _Camera.DOShakeRotation(0.3f, _HitrotationStrenght);
     }
-    public void EnvironmentListener(int Id)
+    private bool CameraUp = true;
+    public void CameraController()
     {
-        if (Id != 7)
+        if (CameraUp)
         {
             LandCameraShake();
             _Camera.transform.rotation = Quaternion.Euler(5, 0, 0);
             offset = new(0, 6f, -10f);
+            CameraUp = false;
         }
-        else if (Id == 7)
+        else
         {
             FallCameraShake();
             _Camera.transform.rotation = Quaternion.Euler(35, 0, 0);
-            offset = new(0, 4f, -10f);
+            offset = new(0, 5f, -10f);
+            CameraUp = true;
         }
     }
     private void OnEnable()
     {
-        EventManager.EnvironmentTransformEvent += EnvironmentListener;
+        EventManager.Camera += CameraController;
+        EventManager.ObstacleHit += HitCameraShake;
     }
     private void OnDisable()
     {
-        EventManager.EnvironmentTransformEvent -= EnvironmentListener;
+        EventManager.Camera -= CameraController;
+        EventManager.ObstacleHit -= HitCameraShake;
     }
 }

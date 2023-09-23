@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4456548642563591651}
   - component: {fileID: 4947626245585827640}
   - component: {fileID: 8344691907106380693}
-  - component: {fileID: 6567578412083222899}
   - component: {fileID: 3817113556535076120}
   - component: {fileID: 5515079205611010427}
+  - component: {fileID: 125251984212800694}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -33,8 +33,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 738993025995504560}
   - {fileID: 4880884096487979626}
+  - {fileID: 738993025995504560}
   - {fileID: 1671560610374023086}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -79,18 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 0
   Score: 0
---- !u!114 &6567578412083222899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706914642639233540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1fc8e78d89e514c8c1a6e6941ac9cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  MultiplierCounter: 0
 --- !u!114 &3817113556535076120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +106,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swerveSpeed: 0.5
   maxSwerveAmount: 1
+--- !u!54 &125251984212800694
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706914642639233540}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
 --- !u!1001 &994124815248825435
 PrefabInstance:
   m_ObjectHideFlags: 0

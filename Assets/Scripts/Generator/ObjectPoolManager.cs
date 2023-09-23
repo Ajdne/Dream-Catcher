@@ -6,7 +6,7 @@ using System.Linq;
 public class ObjectPoolManager : MonoBehaviour
 {
     //https://www.youtube.com/watch?v=9O7uqbEe-xc
-    public static List<PooledObjectInfo> ObjectPools = new List<PooledObjectInfo>();
+    public static List<PooledObjectInfo> ObjectPools = new();
     public static GameObject SpawnObject(GameObject objectToSpawn, Vector3 spawnPosition, Quaternion spawnRotation)
     {
         PooledObjectInfo pool = ObjectPools.Find(p => p.LookupString == objectToSpawn.name);
@@ -26,8 +26,7 @@ public class ObjectPoolManager : MonoBehaviour
         else
         {
             //if there is an inactive object, reactive it
-            spawnableObj.transform.position = spawnPosition;
-            spawnableObj.transform.rotation = spawnRotation;
+            spawnableObj.transform.SetPositionAndRotation(spawnPosition, spawnRotation);
             pool.InactiveObjects.Remove(spawnableObj);
             spawnableObj.SetActive(true);
         }
@@ -51,5 +50,5 @@ public class ObjectPoolManager : MonoBehaviour
 public class PooledObjectInfo
 {
     public string LookupString;
-    public List<GameObject> InactiveObjects = new List<GameObject>();
+    public List<GameObject> InactiveObjects = new();
 }

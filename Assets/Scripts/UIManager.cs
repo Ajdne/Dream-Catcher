@@ -4,20 +4,24 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    [SerializeField]
-    private TMP_Text PlayerHealth;
+    public GameObject Heart1;
+    public GameObject Heart2;
+    public GameObject Heart3;
+
     [SerializeField]
     private TMP_Text PlayerScore;
     [SerializeField]
-    private TMP_Text GameSpeed;
-    [SerializeField]
     private TMP_Text FinalScore;
+
     [SerializeField]
     private TMP_Text LaneDistance;
+    [SerializeField]
+    private List<GameObject> Clouds;
     private void Awake()
     {
         Instance = this;
@@ -25,30 +29,23 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerHealth.text = "Hearts: "+Player.Instance.Health.ToString();
-        PlayerScore.text = "Score: "+Player.Instance.Score.ToString();
-        GameSpeed.text = "Speed: " + LevelGenerator.gameSpeed.ToString("F1");
-        LaneDistance.text = "LaneDistance: " + TapInput.LANE_DISTANCE;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        PlayerHealth.text = "Hearts: " + Player.Instance.Health.ToString();
-        PlayerScore.text = "Sheep: " + Player.Instance.Score.ToString();
-        GameSpeed.text = "Speed: " + LevelGenerator.gameSpeed.ToString("F1")+"%";
+        PlayerScore.text = "0";
+        foreach (GameObject go in Clouds)
+        {
+            go.transform.DOShakePosition(15, 5, 1,90,false,false,ShakeRandomnessMode.Harmonic).SetLoops(-1);
+        }
     }
     public void PauseGame()
     {
         transform.Find("InGameUI").gameObject.SetActive(false);
         transform.Find("GamePausePanel").gameObject.SetActive(true);
-        Time.timeScale = 0;
+        Time.timeScale = 0.0f;
     }
     public void UnpauseGame()
     {
         transform.Find("InGameUI").gameObject.SetActive(true);
         transform.Find("GamePausePanel").gameObject.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = 1.0f;
     }
     public void Settings()
     {
@@ -62,18 +59,19 @@ public class UIManager : MonoBehaviour
     }
     public void MainMenu()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("MainMenu");
     }
     public void PlayAgain()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("Gameplay");
     }
     public void PlayerDeath()
     {
         transform.Find("InGameUI").gameObject.SetActive(false);
         transform.Find("DeathPanel").gameObject.SetActive(true);
-        FinalScore.text = "Sheep counted: " + Player.Instance.Score.ToString();
-        GameManager.Instance.SaveGame(Player.Instance.Score);
+        FinalScore.text = ""+Player.Instance.Score.ToString();
     }
 
     public void PlusDistance()
@@ -88,12 +86,45 @@ public class UIManager : MonoBehaviour
         LaneDistance.text = "Lane Distance: " + TapInput.LANE_DISTANCE;
         Debug.Log(TapInput.LANE_DISTANCE);
     }
+    private void HeartsController()
+    {
+        if(Player.Instance.Health == 3)
+        {
+            Heart1.SetActive(true);
+            Heart2.SetActive(true);
+            Heart3.SetActive(true);
+        }
+        if (Player.Instance.Health == 2)
+        {
+            Heart1.SetActive(true);
+            Heart2.SetActive(true);
+            Heart3.SetActive(false);
+        }
+        if (Player.Instance.Health == 1)
+        {
+            Heart1.SetActive(true);
+            Heart2.SetActive(false);
+            Heart3.SetActive(false);
+        }
+    }
+    private void ScoreController(int Id)
+    {
+        if(Id == 2)
+        {
+            HeartsController();
+        }
+        PlayerScore.text = "" + Player.Instance.Score.ToString();
+    }
     private void OnEnable()
     {
         EventManager.PlayerDeath += PlayerDeath;
+        EventManager.ObstacleHit += HeartsController;
+        EventManager.Sheep += ScoreController;
     }
     private void OnDisable()
     {
         EventManager.PlayerDeath -= PlayerDeath;
+        EventManager.ObstacleHit -= HeartsController;
+        EventManager.Sheep -= ScoreController;
     }
 }

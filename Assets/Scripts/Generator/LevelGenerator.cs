@@ -16,34 +16,9 @@ public class LevelGenerator : MonoBehaviour
     public bool spawnSpawnable;
     public bool IsAlive;
 
-    [SerializeField]
-    private List<Vector3> spawnPositions = new();
     public List<float> spawnProbabilities; // Probabilities corresponding to each prefab
     public GameObject SkyBlock;
-    /*public GameObject SelectSpawnable()
-    {
-        if (spawnableObjects.Count != spawnProbabilities.Count || spawnProbabilities.Count == 0)
-        {
-            Debug.LogError("Prefab array length doesn't match spawn probabilities array length, or probabilities array is empty.");
-            return null;
-        }
 
-        float randomValue = Random.value; // Generate a random value between 0 and 1
-        float cumulativeProbability = 0f;
-
-        for (int i = 0; i < spawnableObjects.Count; i++)
-        {
-            cumulativeProbability += spawnProbabilities[i];
-
-            if (randomValue <= cumulativeProbability)
-            {
-                // Instantiate the selected prefab
-                //return spawnable
-                return spawnableObjects[i];
-            }
-        }
-        return null;
-    }*/
     public GameObject SelectSpawnable()
     {
         if (spawnableObjects == null || spawnProbabilities == null ||
@@ -69,55 +44,36 @@ public class LevelGenerator : MonoBehaviour
     }
     private int GetEnvironment()
    {
-        int rand;
-        switch (GameEnvironment)
+        return GameEnvironment switch
         {
-            case 7:
-                //vazduh (bira za platforme dole)
-                return rand = Random.Range(0,3);
-            case 6:
-                //town (jos uvek nije implementiran)
-                return rand = Random.Range(0, 3);
-            case 5:
-                //shroom
-                return rand = Random.Range(12, 15);
-            case 4:
-                //sea
-                return rand = Random.Range(9, 12);
-            case 3:
-                //polar
-                return rand = Random.Range(6, 9);
-            case 2:
-                //desert
-                return rand = Random.Range(3, 6);
-            default:
-                //countryside
-                return rand = Random.Range(0, 3);
-        }
-   }
+            6 => Random.Range(0, 3),//town (jos uvek nije implementiran)
+            5 => Random.Range(12, 15),//shroom
+            4 => Random.Range(9, 12),//sea
+            3 => Random.Range(6, 9),//polar
+            2 => Random.Range(3, 6),//desert
+            _ => Random.Range(0, 3),//countryside
+        };
+    }
     private void Awake()
     {
         Instance = this;
     }
     public static int EnvironmentCounter;
-    public bool GeneratorOn;
     private Vector3 startPos = new(0f, -0.2f, 450f);
     private void Start()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1.0f;
         IsAlive = true;
         spawn = false;
-        GeneratorOn = false;
         gameSpeed = 15;
-        EventManager.StartEnvironmentTransformEvent(7);
+        EventManager.StartEnvironmentTransformEvent(1);
         StartCoroutine(GameSpeedUpdate());
     }
+    private int EnvironmentCounterLimit;
     private void Update()
     {
         // stvara platforme
         // znak za transition objekat je broj sa countera
-        if (GeneratorOn)
-        {
             if (spawn)
             {
                 EnvironmentCounter++;
@@ -126,17 +82,14 @@ public class LevelGenerator : MonoBehaviour
                 //platform.GetComponent<EnvironmentMoverUp>().enabled = false;
                 platform.GetComponent<EnvironmentMover>().enabled = true;
                 platform.GetComponent<BoxCollider>().enabled = true;
-                if (EnvironmentCounter == 4) //ukljucuje capsule colider na platformi i gasi corutinu
+                if (EnvironmentCounter == EnvironmentCounterLimit) //ukljucuje capsule colider na platformi i gasi corutinu
                 {
-                    EnvironmentCounter = 0;
+                    EnvironmentCounter = Random.Range(3,7);
                     platform.transform.Find("Trigger2").gameObject.SetActive(true);
                     platform.GetComponent<BoxCollider>().enabled = false;
-                    GeneratorOn = false;
                 }
-
                 spawn = false;
             }
-        }
     }
     private void SpawnStartPlatform()
     {
@@ -155,12 +108,11 @@ public class LevelGenerator : MonoBehaviour
                 platform.transform.Find("Trigger1").gameObject.SetActive(true);
             }
         }
-        GameObject skyBlock = ObjectPoolManager.SpawnObject(SkyBlock, new Vector3(0, -165, 0), Quaternion.identity);
+        ObjectPoolManager.SpawnObject(SkyBlock, new Vector3(0, -165, 0), Quaternion.identity);
     }
     private void PlayerDeath()
     {
         gameObject.GetComponent<BoxCollider>().enabled = false;
-        GeneratorOn = false;
         IsAlive = false;
         spawn = false;
         gameSpeed = 0f;
@@ -188,17 +140,7 @@ public class LevelGenerator : MonoBehaviour
     private void EnvironemntListener(int Id)
     {
         GameEnvironment = Id;
-        // proverava koji je tip environmenta
-        // od 1 do 6 ukljucuje generator
-        if (Id != 7)
-        {
-            GeneratorOn = true;
-        }
-        else // ako je 7 iskljucuje generator i stvara veliku platformu dole
-        {
-            GeneratorOn = false;
-            SpawnStartPlatform();
-        }
+        SpawnStartPlatform();
     }
     IEnumerator GameSpeedUpdate()
     {

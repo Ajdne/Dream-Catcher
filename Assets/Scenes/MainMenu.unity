@@ -2381,6 +2381,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button_help
       objectReference: {fileID: 0}
+    - target: {fileID: 2623335463798651842, guid: 66643ea6a6021144bb7d1465fb526396,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2675,6 +2680,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonShop
       objectReference: {fileID: 0}
+    - target: {fileID: 8415016177398240460, guid: 1ac8c93b7a3ec7c4da241cc53df831ec,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2797,6 +2807,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Button_settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849658478438296262, guid: 5aeade5aeebbb3f4eb2a86517f312f8d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5194979754548200664, guid: 5aeade5aeebbb3f4eb2a86517f312f8d,
         type: 3}
@@ -4466,6 +4481,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Button_x
+      objectReference: {fileID: 0}
+    - target: {fileID: 2085823069911284110, guid: 77ef7345f5bad6245b8e84ccfc42d80c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2594814820139293896, guid: 77ef7345f5bad6245b8e84ccfc42d80c,
         type: 3}
