@@ -53,7 +53,7 @@ public class CameraMotor : MonoBehaviour
         _Camera.DOShakePosition(0.3f, _HitpositionStrenght);
         _Camera.DOShakeRotation(0.3f, _HitrotationStrenght);
     }
-    private bool CameraUp = true;
+    public bool CameraUp = true;
     public void CameraController()
     {
         if (CameraUp)

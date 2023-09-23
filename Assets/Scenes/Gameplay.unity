@@ -3517,6 +3517,7 @@ MonoBehaviour:
   _HitpositionStrenght: {x: 0, y: 2, z: 2}
   _HitrotationStrenght: {x: 0, y: 2, z: 2}
   lookAt: {fileID: 1369017422788384428}
+  CameraUp: 1
 --- !u!1 &1570635108
 GameObject:
   m_ObjectHideFlags: 0
@@ -4835,6 +4836,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 75081875919708426, guid: a520f9e61b1950e47a7ba1ad3f6517b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1706914642639233540, guid: a520f9e61b1950e47a7ba1ad3f6517b7,
         type: 3}
       propertyPath: m_Name
@@ -4914,6 +4920,11 @@ PrefabInstance:
         type: 3}
       propertyPath: swerveSpeed
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5560972340827525644, guid: a520f9e61b1950e47a7ba1ad3f6517b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6567578412083222899, guid: a520f9e61b1950e47a7ba1ad3f6517b7,
         type: 3}

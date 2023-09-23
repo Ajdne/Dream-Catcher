@@ -9,6 +9,7 @@ public class LandTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             EventManager.StartCamera();
+            EventManager.StartTransformPlayer(LevelGenerator.GameEnvironment);
         }
     }
 }

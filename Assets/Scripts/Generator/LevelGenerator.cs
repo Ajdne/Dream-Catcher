@@ -15,8 +15,8 @@ public class LevelGenerator : MonoBehaviour
     public bool spawn;
     public bool spawnSpawnable;
     public bool IsAlive;
-
-    public List<float> spawnProbabilities; // Probabilities corresponding to each prefab
+    // Probabilities corresponding to each prefab
+    public List<float> spawnProbabilities; 
     public GameObject SkyBlock;
 
     public GameObject SelectSpawnable()
@@ -65,7 +65,7 @@ public class LevelGenerator : MonoBehaviour
         Time.timeScale = 1.0f;
         IsAlive = true;
         spawn = false;
-        gameSpeed = 15;
+        gameSpeed = 12;
         EventManager.StartEnvironmentTransformEvent(1);
         StartCoroutine(GameSpeedUpdate());
     }
@@ -74,22 +74,22 @@ public class LevelGenerator : MonoBehaviour
     {
         // stvara platforme
         // znak za transition objekat je broj sa countera
-            if (spawn)
+        if (spawn)
+        {
+            EnvironmentCounter++;
+            int rand = GetEnvironment();
+            GameObject platform = ObjectPoolManager.SpawnObject(EnvironmentPlatforms[rand], startPos, Quaternion.identity);
+            //platform.GetComponent<EnvironmentMoverUp>().enabled = false;
+            platform.GetComponent<EnvironmentMover>().enabled = true;
+            platform.GetComponent<BoxCollider>().enabled = true;
+            if (EnvironmentCounter == EnvironmentCounterLimit) //ukljucuje capsule colider na platformi i gasi corutinu
             {
-                EnvironmentCounter++;
-                int rand = GetEnvironment();
-                GameObject platform = ObjectPoolManager.SpawnObject(EnvironmentPlatforms[rand], startPos, Quaternion.identity);
-                //platform.GetComponent<EnvironmentMoverUp>().enabled = false;
-                platform.GetComponent<EnvironmentMover>().enabled = true;
-                platform.GetComponent<BoxCollider>().enabled = true;
-                if (EnvironmentCounter == EnvironmentCounterLimit) //ukljucuje capsule colider na platformi i gasi corutinu
-                {
-                    EnvironmentCounter = 0;
-                    platform.transform.Find("Trigger2").gameObject.SetActive(true);
-                    platform.GetComponent<BoxCollider>().enabled = false;
-                }
-                spawn = false;
+                EnvironmentCounter = 0;
+                platform.transform.Find("Trigger2").gameObject.SetActive(true);
+                platform.GetComponent<BoxCollider>().enabled = false;
             }
+            spawn = false;
+        }
     }
     private void SpawnStartPlatform()
     {
@@ -150,7 +150,7 @@ public class LevelGenerator : MonoBehaviour
             yield return new WaitForSecondsRealtime(1);
             if (gameSpeed < 100)
             {
-                gameSpeed += 0.25f;
+                gameSpeed += 0.2f;
             }
         }
     }

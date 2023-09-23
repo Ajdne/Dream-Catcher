@@ -11,6 +11,7 @@ public class FallTrigger : MonoBehaviour
             EventManager.StartCamera();
             int rand = Random.Range(1, 7);
             EventManager.StartEnvironmentTransformEvent(rand);
+            EventManager.StartTransformPlayer(7);
         }
     }
 }

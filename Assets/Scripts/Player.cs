@@ -9,6 +9,11 @@ public class Player : MonoBehaviour
     public int Health;
     public int Score;
     public int MultiplierCounter;
+    [SerializeField] private GameObject krevet;
+    [SerializeField] private GameObject krevetPadobran;
+    [SerializeField] private GameObject krevetBrod;
+    [SerializeField] private GameObject krevetPesak;
+    [SerializeField] private GameObject krevetSkije;
     private void Awake()
     {
         Instance = this;
@@ -18,11 +23,14 @@ public class Player : MonoBehaviour
     {
         EventManager.ObstacleHit += ObstacleHit;
         EventManager.Sheep += SheepCollect;
+        EventManager.TransformPlayer += TransformPlayer;
+
     }
     private void OnDisable()
     {
         EventManager.ObstacleHit -= ObstacleHit;
         EventManager.Sheep -= SheepCollect;
+        EventManager.TransformPlayer -= TransformPlayer;
     }
     private void ObstacleHit()
     {
@@ -63,5 +71,46 @@ public class Player : MonoBehaviour
     {
         Health = 3;
         MultiplierCounter = 0;
+    }
+    private void TransformPlayer(int Id)
+    {
+        switch (Id)
+        {
+            case 7: //padobran
+                krevet.SetActive(false);
+                krevetBrod.SetActive(false);
+                krevetPesak.SetActive(false);
+                krevetSkije.SetActive(false);
+                krevetPadobran.SetActive(true);
+                break;
+            case 4: //brod
+                krevet.SetActive(false);
+                krevetBrod.SetActive(true);
+                krevetPesak.SetActive(false);
+                krevetSkije.SetActive(false);
+                krevetPadobran.SetActive(false);
+                break;
+            case 3: //skije
+                krevet.SetActive(false);
+                krevetBrod.SetActive(false);
+                krevetPesak.SetActive(false);
+                krevetSkije.SetActive(true);
+                krevetPadobran.SetActive(false);
+                break;
+            case 2: //pustinja
+                krevet.SetActive(false);
+                krevetBrod.SetActive(false);
+                krevetPesak.SetActive(true);
+                krevetSkije.SetActive(false);
+                krevetPadobran.SetActive(false);
+                break;
+            default: //obican
+                krevet.SetActive(true);
+                krevetBrod.SetActive(false);
+                krevetPesak.SetActive(false);
+                krevetSkije.SetActive(false);
+                krevetPadobran.SetActive(false);
+                break;
+        }
     }
 }
