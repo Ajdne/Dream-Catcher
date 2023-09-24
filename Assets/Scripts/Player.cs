@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player Instance;
+    public int ObstaclesHit;
     public int Health;
     public int Score;
     public int MultiplierCounter;
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
         if(Health >= 1)
         {
             Health -= 1;
+            ObstaclesHit += 1;
             if (Health == 0)
                 EventManager.StartPlayerDeath();
         }
@@ -44,19 +46,19 @@ public class Player : MonoBehaviour
     }
     private void SheepCollect(int Id)
     {
-        if(Id == 1)//white sheep
+        if (Id == 1) // White sheep
         {
             Score++;
         }
-        if(Id == 2)// pink sheep
+        else if (Id == 2) // Pink sheep
         {
-            if(Health <= 2)
+            if (Health <= 2)
             {
                 Health++;
             }
             Score++;
         }
-        if(Id == 3)//black sheep
+        else if (Id == 3) // Black sheep
         {
             Score++;
             if (MultiplierCounter <= 2)
@@ -69,47 +71,36 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
+        ObstaclesHit = 0;
         Health = 3;
         MultiplierCounter = 0;
     }
     private void TransformPlayer(int Id)
     {
+        // Deactivate all objects first
+        krevet.SetActive(false);
+        krevetBrod.SetActive(false);
+        krevetPesak.SetActive(false);
+        krevetSkije.SetActive(false);
+        krevetPadobran.SetActive(false);
+
+        // Activate the appropriate object based on the transformationId
         switch (Id)
         {
-            case 7: //padobran
-                krevet.SetActive(false);
-                krevetBrod.SetActive(false);
-                krevetPesak.SetActive(false);
-                krevetSkije.SetActive(false);
+            case 7: // Padobran
                 krevetPadobran.SetActive(true);
                 break;
-            case 4: //brod
-                krevet.SetActive(false);
+            case 4: // Brod
                 krevetBrod.SetActive(true);
-                krevetPesak.SetActive(false);
-                krevetSkije.SetActive(false);
-                krevetPadobran.SetActive(false);
                 break;
-            case 3: //skije
-                krevet.SetActive(false);
-                krevetBrod.SetActive(false);
-                krevetPesak.SetActive(false);
+            case 3: // Skije
                 krevetSkije.SetActive(true);
-                krevetPadobran.SetActive(false);
                 break;
-            case 2: //pustinja
-                krevet.SetActive(false);
-                krevetBrod.SetActive(false);
+            case 2: // Pustinja
                 krevetPesak.SetActive(true);
-                krevetSkije.SetActive(false);
-                krevetPadobran.SetActive(false);
                 break;
-            default: //obican
+            default: // Obican
                 krevet.SetActive(true);
-                krevetBrod.SetActive(false);
-                krevetPesak.SetActive(false);
-                krevetSkije.SetActive(false);
-                krevetPadobran.SetActive(false);
                 break;
         }
     }

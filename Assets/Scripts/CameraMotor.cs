@@ -32,8 +32,10 @@ public class CameraMotor : MonoBehaviour
     }
     private void Update()
     {
-        Vector3 desiredPosition = lookAt.position + offset;
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime*3);
+        Vector3 targetPosition = lookAt.position + offset;
+        float lerpSpeed = 3f; // Adjust this value to control the speed of the interpolation
+
+        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * lerpSpeed);
     }
     public void FallCameraShake()
     {

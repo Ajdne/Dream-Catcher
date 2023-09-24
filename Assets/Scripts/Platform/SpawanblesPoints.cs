@@ -24,7 +24,7 @@ public class SpawanblesPoints : MonoBehaviour
     {
         foreach (Transform pointTransform in pointsTransform)
         {
-            if (pointTransform.childCount > 0 && pointTransform.GetChild(0).gameObject.activeSelf)
+            if (pointTransform.childCount > 0)
             {
                 ObjectPoolManager.ReturnObject(pointTransform.GetChild(0).gameObject);
             }

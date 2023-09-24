@@ -93,25 +93,26 @@ public class UIManager : MonoBehaviour
     }
     private void HeartsController()
     {
-        Color c = Heart1.color;
-        if (Player.Instance.Health == 3)
+        Color heartColor = Heart1.color;
+        int playerHealth = Player.Instance.Health;
+
+        if (playerHealth >= 1 && playerHealth <= 3)
         {
-            c.a = 1f;
-            Heart2.color = c;
-            Heart3.color = c;
-        }
-        if (Player.Instance.Health == 2)
-        {
-            c.a = 1f;
-            Heart2.color = c;
-            c.a = 0.5f;
-            Heart3.color = c;
-        }
-        if (Player.Instance.Health == 1)
-        {
-            c.a = 0.5f;
-            Heart2.color = c;
-            Heart3.color = c;
+            heartColor.a = 1f;
+            Heart2.color = heartColor;
+            Heart3.color = heartColor;
+
+            if (playerHealth == 2)
+            {
+                heartColor.a = 0.5f;
+                Heart3.color = heartColor;
+            }
+            else if (playerHealth == 1)
+            {
+                Heart2.color = heartColor;
+                heartColor.a = 0.5f;
+                Heart3.color = heartColor;
+            }
         }
     }
     private void ScoreController()

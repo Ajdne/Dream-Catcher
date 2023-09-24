@@ -18,6 +18,8 @@ public class LevelGenerator : MonoBehaviour
     public bool spawnSpawnable;
     public bool IsAlive;
 
+    public int GameTime;
+
     public GameObject SkyBlock;
 
     public GameObject SelectSpawnable()
@@ -66,7 +68,8 @@ public class LevelGenerator : MonoBehaviour
         Time.timeScale = 1.0f;
         IsAlive = true;
         spawn = false;
-        gameSpeed = 12;
+        gameSpeed = 13;
+        GameTime = 0;
         EventManager.StartEnvironmentTransformEvent(1);
         StartCoroutine(GameSpeedUpdate());
     }
@@ -80,7 +83,7 @@ public class LevelGenerator : MonoBehaviour
             EnvironmentCounter++;
             int rand = GetEnvironment();
             GameObject platform = ObjectPoolManager.SpawnObject(EnvironmentPlatforms[rand], startPos, Quaternion.identity);
-            //platform.GetComponent<EnvironmentMoverUp>().enabled = false;
+
             platform.GetComponent<EnvironmentMover>().enabled = true;
             platform.GetComponent<BoxCollider>().enabled = true;
             if (EnvironmentCounter == EnvironmentCounterLimit) //ukljucuje capsule colider na platformi i gasi corutinu
@@ -94,11 +97,13 @@ public class LevelGenerator : MonoBehaviour
     }
     private void SpawnStartPlatform()
     {
-        Vector3[] pozicije = new Vector3[4];
-        pozicije[0] = new(0, -200, 0);
-        pozicije[1] = new(0, -200, 150);
-        pozicije[2] = new(0, -200, 450);
-        pozicije[3] = new(0, -200, 300);
+        Vector3[] pozicije = new Vector3[4]
+        {
+        new Vector3(0, -200, 0),
+        new Vector3(0, -200, 150),
+        new Vector3(0, -200, 450),
+        new Vector3(0, -200, 300)
+        };
         for (int i = 0; i < pozicije.Length; i++)
         {
             int rand = GetEnvironment();
@@ -146,13 +151,20 @@ public class LevelGenerator : MonoBehaviour
     }
     IEnumerator GameSpeedUpdate()
     {
-        while(IsAlive)
+        const float maxGameSpeed = 100f;
+        const float speedIncrement = 0.2f;
+        const float updateInterval = 1f;
+
+        while (IsAlive)
         {
-            yield return new WaitForSecondsRealtime(1);
-            if (gameSpeed < 100)
+            yield return new WaitForSecondsRealtime(updateInterval);
+
+            if (gameSpeed < maxGameSpeed)
             {
-                gameSpeed += 0.2f;
+                gameSpeed += speedIncrement;
             }
+
+            GameTime += 1;
         }
     }
 }
