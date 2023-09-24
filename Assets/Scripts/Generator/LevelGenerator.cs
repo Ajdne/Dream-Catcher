@@ -7,6 +7,8 @@ public class LevelGenerator : MonoBehaviour
     public static LevelGenerator Instance;
     [SerializeField]
     private List<GameObject> spawnableObjects = new();
+    // Probabilities corresponding to each prefab
+    public List<float> spawnProbabilities;
     [SerializeField]
     private List<GameObject> EnvironmentPlatforms = new();
 
@@ -15,8 +17,7 @@ public class LevelGenerator : MonoBehaviour
     public bool spawn;
     public bool spawnSpawnable;
     public bool IsAlive;
-    // Probabilities corresponding to each prefab
-    public List<float> spawnProbabilities; 
+
     public GameObject SkyBlock;
 
     public GameObject SelectSpawnable()
