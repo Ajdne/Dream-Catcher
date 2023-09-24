@@ -20,10 +20,15 @@ public class CameraMove : MonoBehaviour
             transform.DOMove(new Vector3(3.26f, 2.06f, -5.96f), duration); 
             transform.DORotate(new Vector3(0, -90, 0), duration);
         }
-        if (target.CompareTag("MainMenu"))
+        else if (target.CompareTag("MainMenu"))
         {
-            transform.DOMove(new Vector3(6.945f, 2.043f, -6.309f), duration); 
-            transform.DORotate(new Vector3(10, -60, 0), duration);           
+            transform.DOMove(new Vector3(8.004f, 2.06f, -6.363f), duration); 
+            transform.DORotate(new Vector3(7f, -67.226f, 0), duration);           
+        }
+        else if (target.CompareTag("Achievements"))
+        {
+            transform.DOMove(new Vector3(3.87f, 1.71f, -5.44f), duration);
+            transform.DORotate(new Vector3(90f, 0, 0), duration);
         }
     }
 }

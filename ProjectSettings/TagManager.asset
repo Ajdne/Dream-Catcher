@@ -10,6 +10,7 @@ TagManager:
   - Settings
   - Shop
   - MainMenu
+  - Achievements
   layers:
   - Default
   - TransparentFX

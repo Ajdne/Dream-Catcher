@@ -13,7 +13,6 @@ public class MainMenuManager : MonoBehaviour
     }
     [SerializeField] private GameObject _fadePanel;
 
-    [SerializeField] private Text MusicButtonText;
     public void Dream()
     {
         SceneManager.LoadScene("Gameplay");
@@ -24,14 +23,14 @@ public class MainMenuManager : MonoBehaviour
         AudioManager.Instance.MuteUnmuteMusic();
         AudioManager.Instance.MuteUnmuteSFX();
 
-        if (AudioManager.Instance.musicSource.mute)
+       /*if (AudioManager.Instance.musicSource.mute)
         {
             MusicButtonText.text = "OFF"; 
         }
         else
         {
             MusicButtonText.text = "ON";
-        }
+        }*/
     }
     private void Start()
     {
@@ -39,6 +38,9 @@ public class MainMenuManager : MonoBehaviour
         ShopIsClosed = true;
         duration = 5;
     }
+
+    #region WingMover
+
     [SerializeField] private GameObject SettingsLeftWing;
     [SerializeField] private GameObject SettingsRightWing;
     [SerializeField] private GameObject ShopLeftWing;
@@ -46,6 +48,7 @@ public class MainMenuManager : MonoBehaviour
     private bool SettingsIsClosed;
     private bool ShopIsClosed;
     public float duration;
+
     public void MoveWingsSettings()
     {
         if (SettingsIsClosed)
@@ -85,6 +88,8 @@ public class MainMenuManager : MonoBehaviour
             ShopIsClosed = true;
         }
     }
+
+    #endregion
 
     public void Quit()
     {
