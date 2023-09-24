@@ -351,9 +351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffad471df9de99f43b532029c239e97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Heart1: {fileID: 469664188}
-  Heart2: {fileID: 2058558941}
-  Heart3: {fileID: 928316545}
+  Heart1Object: {fileID: 469664188}
+  Heart2Object: {fileID: 2058558941}
+  Heart3Object: {fileID: 928316545}
   PlayerScore: {fileID: 1483868253}
   FinalScore: {fileID: 1340796037}
   LaneDistance: {fileID: 1244353356}
@@ -3560,6 +3560,17 @@ MonoBehaviour:
   - {fileID: 2353270408577773064, guid: f5288ee75f224514ca73a313efa2d7d0, type: 3}
   - {fileID: 6243528946387359886, guid: 5a279b7cfa59ff44cbd3e400b1375835, type: 3}
   - {fileID: 6243528946387359886, guid: 92e8e0c172d4f9242b2a656e14a6c08b, type: 3}
+  spawnProbabilities:
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.06
+  - 0.01
+  - 0.03
+  - 0.34
+  - 0.08
+  - 0.08
   EnvironmentPlatforms:
   - {fileID: 1584003374224120139, guid: 8a20450613920844ea6b22d700d90a04, type: 3}
   - {fileID: 2198265317769366376, guid: fd76680e3eede504ca1285f46b972812, type: 3}
@@ -3579,17 +3590,6 @@ MonoBehaviour:
   spawn: 0
   spawnSpawnable: 0
   IsAlive: 0
-  spawnProbabilities:
-  - 0.1
-  - 0.1
-  - 0.1
-  - 0.05
-  - 0.05
-  - 0.05
-  - 0.05
-  - 0.3
-  - 0.1
-  - 0.1
   SkyBlock: {fileID: 3501891344237317677, guid: 89f0c13adfad0bc4eb23ae5db040aa6b,
     type: 3}
 --- !u!4 &1570635110

@@ -9,10 +9,12 @@ using DG.Tweening;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    public GameObject Heart1;
-    public GameObject Heart2;
-    public GameObject Heart3;
-
+    public GameObject Heart1Object;
+    public GameObject Heart2Object;
+    public GameObject Heart3Object;
+    private Image Heart1;
+    private Image Heart2;
+    private Image Heart3;
     [SerializeField]
     private TMP_Text PlayerScore;
     [SerializeField]
@@ -29,6 +31,9 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Heart1 = Heart1Object.GetComponent<Image>();
+        Heart2 = Heart2Object.GetComponent<Image>();
+        Heart3 = Heart3Object.GetComponent<Image>();
         PlayerScore.text = "0";
         foreach (GameObject go in Clouds)
         {
@@ -88,23 +93,25 @@ public class UIManager : MonoBehaviour
     }
     private void HeartsController()
     {
-        if(Player.Instance.Health == 3)
+        Color c = Heart1.color;
+        if (Player.Instance.Health == 3)
         {
-            Heart1.SetActive(true);
-            Heart2.SetActive(true);
-            Heart3.SetActive(true);
+            c.a = 1f;
+            Heart2.color = c;
+            Heart3.color = c;
         }
         if (Player.Instance.Health == 2)
         {
-            Heart1.SetActive(true);
-            Heart2.SetActive(true);
-            Heart3.SetActive(false);
+            c.a = 1f;
+            Heart2.color = c;
+            c.a = 0.5f;
+            Heart3.color = c;
         }
         if (Player.Instance.Health == 1)
         {
-            Heart1.SetActive(true);
-            Heart2.SetActive(false);
-            Heart3.SetActive(false);
+            c.a = 0.5f;
+            Heart2.color = c;
+            Heart3.color = c;
         }
     }
     private void ScoreController()
