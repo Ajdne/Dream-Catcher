@@ -61,15 +61,15 @@ public class CameraMotor : MonoBehaviour
         if (CameraUp)
         {
             LandCameraShake();
-            _Camera.transform.rotation = Quaternion.Euler(5, 0, 0);
-            offset = new(0, 6f, -10f);
+            _Camera.transform.rotation = Quaternion.Euler(7f, 0, 0);
+            offset = new(0f, 5f, -9f);
             CameraUp = false;
         }
         else
         {
             FallCameraShake();
-            _Camera.transform.rotation = Quaternion.Euler(35, 0, 0);
-            offset = new(0, 5f, -10f);
+            _Camera.transform.rotation = Quaternion.Euler(42f, 0, 0);
+            offset = new(0f, 6f, -10f);
             CameraUp = true;
         }
     }

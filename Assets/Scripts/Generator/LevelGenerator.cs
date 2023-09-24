@@ -149,19 +149,23 @@ public class LevelGenerator : MonoBehaviour
         EnvironmentCounterLimit = Random.Range(3, 7);
         SpawnStartPlatform();
     }
+    private const float maxGameSpeed = 100f;
+    private const float halfGameSpeed = 70f;
+    private const float speedIncrement = 0.2f;
+    private const float speedIncrement2 = 0.1f;
+    private const float updateInterval = 1f;
     IEnumerator GameSpeedUpdate()
     {
-        const float maxGameSpeed = 100f;
-        const float speedIncrement = 0.2f;
-        const float updateInterval = 1f;
-
         while (IsAlive)
         {
             yield return new WaitForSecondsRealtime(updateInterval);
 
-            if (gameSpeed < maxGameSpeed)
+            if (gameSpeed < halfGameSpeed)
             {
                 gameSpeed += speedIncrement;
+            }else if(gameSpeed < maxGameSpeed)
+            {
+                gameSpeed += speedIncrement2;
             }
 
             GameTime += 1;
