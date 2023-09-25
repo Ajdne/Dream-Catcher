@@ -7,37 +7,70 @@ using TMPro;
 public class MainMenuManager : MonoBehaviour
 {
     public static MainMenuManager Instace;
+
+    [SerializeField] private TextMeshProUGUI TotalSheepText;
+    [SerializeField] private TextMeshProUGUI MostSheepText;
+    [SerializeField] private TextMeshProUGUI TotalDreamsText;
+    [SerializeField] private TextMeshProUGUI TotalDreamTimeText;
+    [SerializeField] private TextMeshProUGUI LongestDreamText;
+    [SerializeField] private TextMeshProUGUI ObstaclesHitText;
+
+    [SerializeField] private GameObject AchievementsPanel;
+    [SerializeField] private GameObject StatsPanel;
+    bool panel = false;
+
+    GameManager GM;
+
     private void Awake()
     {
         Instace = this;
     }
-    [SerializeField] private GameObject _fadePanel;
 
-    public void Dream()
-    {
-        SceneManager.LoadScene("Gameplay");
-    }
-
-    public void MusicOnOff()
-    {
-        AudioManager.Instance.MuteUnmuteMusic();
-        AudioManager.Instance.MuteUnmuteSFX();
-
-       /*if (AudioManager.Instance.musicSource.mute)
-        {
-            MusicButtonText.text = "OFF"; 
-        }
-        else
-        {
-            MusicButtonText.text = "ON";
-        }*/
-    }
     private void Start()
     {
         SettingsIsClosed = true;
         ShopIsClosed = true;
         duration = 5;
+        GM = GameManager.Instance;
+        UpdatePlayerStats();
     }
+
+    #region Phone
+    public void SwitchPanel() 
+    {
+        panel = !panel;
+        AchievementsPanel.SetActive(!panel);
+        StatsPanel.SetActive(panel);
+    }
+    #endregion
+
+    #region PlayerStats
+    public void UpdatePlayerStats()
+    {
+        TotalSheepText.text = "Total Sheep Count: " + GM.TotalSheep.ToString();
+        MostSheepText.text = "Most Sheep Collecetd: " + GM.MostSheepCollected.ToString();
+        TotalDreamsText.text = "Total Dream Count: " + GM.TotalDreams.ToString();
+        ObstaclesHitText.text = "Obstacle Hit Count: " + GM.ObstaclesHit.ToString();
+
+        int hours, minutes, seconds;
+
+        hours = GM.TotalDreamTime / 360; 
+        minutes = (GM.TotalDreamTime % 360) / 60 ;
+        seconds = (GM.TotalDreamTime % 360) % 60;
+        TotalDreamTimeText.text = "Total Dream Time: \n" + hours + "h " + minutes + "m " + seconds + "s";
+
+        minutes = (GM.LongestDream % 360) / 60;
+        seconds = (GM.LongestDream % 360) % 60;
+        LongestDreamText.text = "Longest Dream Time: \n" + minutes + "m " + seconds + "s";
+    }
+    #endregion
+
+    #region Dream
+    public void Dream()
+    {
+        SceneManager.LoadScene("Gameplay");
+    }
+    #endregion
 
     #region WingMover
 
@@ -89,6 +122,14 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region MusicControl
+    public void MusicOnOff()
+    {
+        AudioManager.Instance.MuteUnmuteMusic();
+        AudioManager.Instance.MuteUnmuteSFX();
+    }
     #endregion
 
     public void Quit()
