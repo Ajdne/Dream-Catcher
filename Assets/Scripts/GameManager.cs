@@ -7,7 +7,15 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     private void Awake()
     {
-        Instance = this;
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
     private void OnEnable()
     {

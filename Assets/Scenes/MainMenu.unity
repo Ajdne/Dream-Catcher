@@ -11670,7 +11670,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSounds: []
-  sfxSounds: []
+  sfxSounds:
+  - {fileID: 0}
   musicSource: {fileID: 1614389299}
   sfxSorce: {fileID: 29312192}
 --- !u!4 &1832882782
