@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/PolyPerfect/Low Poly Ultimate Pack/01 - All Models.unity.meta
 guid: 4259eda1b3dbc2c44bf45cc4786cc4c6
+========
+guid: 202e7f1e214108d43834d99af8c8aa1d
+timeCreated: 1455482293
+licenseType: Store
+>>>>>>>> parent of 389953c (sounds, environments):Assets/Resources/PolyPerfect/Low Poly Ultimate Pack/02 - Worlds.unity.meta
 DefaultImporter:
-  externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 

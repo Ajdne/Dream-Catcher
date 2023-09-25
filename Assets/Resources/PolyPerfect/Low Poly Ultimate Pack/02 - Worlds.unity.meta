@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/PolyPerfect/Low Poly Ultimate Pack/02 - Worlds.unity.meta
 guid: 202e7f1e214108d43834d99af8c8aa1d
 timeCreated: 1455482293
+========
+guid: 266d18a39c556cd4c8f810a63e9df0db
+timeCreated: 1455310372
+>>>>>>>> parent of 389953c (sounds, environments):Assets/Resources/PolyPerfect/Low Poly Ultimate Pack/03 - Islands.unity.meta
 licenseType: Store
 DefaultImporter:
   userData: 
