@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
@@ -10,11 +11,17 @@ public class Player : MonoBehaviour
     public int Health;
     public int Score;
     public int MultiplierCounter;
+    
     [SerializeField] private GameObject krevet;
     [SerializeField] private GameObject krevetPadobran;
     [SerializeField] private GameObject krevetBrod;
     [SerializeField] private GameObject krevetPesak;
     [SerializeField] private GameObject krevetSkije;
+
+    [SerializeField] private ParticleSystem Leaves;
+    [SerializeField] private ParticleSystem Snow;
+    [SerializeField] private ParticleSystem Skulls;
+    [SerializeField] private ParticleSystem Smoke;
     private void Awake()
     {
         Instance = this;
@@ -25,7 +32,6 @@ public class Player : MonoBehaviour
         EventManager.ObstacleHit += ObstacleHit;
         EventManager.Sheep += SheepCollect;
         EventManager.TransformPlayer += TransformPlayer;
-
     }
     private void OnDisable()
     {
@@ -35,6 +41,8 @@ public class Player : MonoBehaviour
     }
     private void ObstacleHit()
     {
+
+        Skulls.gameObject.SetActive(true);
         if(Health >= 1)
         {
             Health -= 1;
@@ -84,6 +92,9 @@ public class Player : MonoBehaviour
         krevetSkije.SetActive(false);
         krevetPadobran.SetActive(false);
 
+        Leaves.gameObject.SetActive(false);
+        Snow.gameObject.SetActive(false);
+        Smoke.gameObject.SetActive(true);
         // Activate the appropriate object based on the transformationId
         switch (Id)
         {
@@ -92,15 +103,19 @@ public class Player : MonoBehaviour
                 break;
             case 4: // Brod
                 krevetBrod.SetActive(true);
+                Leaves.gameObject.SetActive(true);
                 break;
             case 3: // Skije
                 krevetSkije.SetActive(true);
+                Snow.gameObject.SetActive(true);
                 break;
             case 2: // Pustinja
                 krevetPesak.SetActive(true);
+                Snow.gameObject.SetActive(true);
                 break;
             default: // Obican
                 krevet.SetActive(true);
+                Leaves.gameObject.SetActive(true);
                 break;
         }
     }

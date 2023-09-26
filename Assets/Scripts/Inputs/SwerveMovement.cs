@@ -14,25 +14,34 @@ namespace Assets.Scripts.Inputs
         private float swerveSpeed = 0.5f;
         [SerializeField]
         private float maxSwerveAmount = 1f;
+        private Vector3 leftWall;
+        private Vector3 rightWall;
         private void Awake()
         {
             _input = GetComponent<SwerveInput>();
+        }
+        private void Start()
+        {
+            leftWall = new Vector3(-2f, 0, 0);
+            rightWall = new Vector3(2f, 0, 0);
         }
         private void Update()
         {
             if (transform.position.x <= -2f)
             {
-                transform.position = new Vector3(-2f, 0, 0);
+                transform.position = leftWall;
             }
 
             if (transform.position.x >= 2f)
             {
-                transform.position = new Vector3(2f, 0, 0);
+                transform.position = rightWall;
             }
 
             float swerveAmount = Time.deltaTime * swerveSpeed *  _input.MoveFactorX;
             swerveAmount = Mathf.Clamp(swerveAmount,-maxSwerveAmount, maxSwerveAmount);
             transform.Translate(swerveAmount, 0, 0);
+
+
         }
     }
 }

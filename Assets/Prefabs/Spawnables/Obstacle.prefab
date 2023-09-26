@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1887367700492668963}
   - component: {fileID: 4816385730907866202}
   - component: {fileID: 6387440837823032247}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -83,17 +83,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 625def075b0c3764ea875ffd124490e7,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 625def075b0c3764ea875ffd124490e7,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 625def075b0c3764ea875ffd124490e7,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 625def075b0c3764ea875ffd124490e7,
         type: 3}

@@ -22,11 +22,15 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
     }
-
-    private void Start()
+    private void OnEnable()
     {
-        //ako scena meni -> pusti meni music 
-        //ako scena gameplay -> pusti gameplay music
+        EventManager.SFXEvent += PlaySFX;
+        EventManager.MusicEvent += PlayMusic;
+    }
+    private void OnDisable()
+    {
+        EventManager.SFXEvent -= PlaySFX;
+        EventManager.MusicEvent -= PlayMusic;
     }
 
     public void PlayMusic(string name)

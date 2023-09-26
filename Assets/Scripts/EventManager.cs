@@ -12,6 +12,16 @@ public class EventManager : MonoBehaviour
     public static event Action Camera;
     public static event Action UpdateGUI;
     public static event Action<int> TransformPlayer;
+    public static event Action<string> SFXEvent;
+    public static event Action<string> MusicEvent;
+    public static void StartSFXEvent(string eventName)
+    {
+        SFXEvent?.Invoke(eventName);
+    }
+    public static void StartMusicEvent(string eventName)
+    {
+        MusicEvent?.Invoke(eventName);
+    }
     public static void StartTransformPlayer(int Id)
     {
         TransformPlayer?.Invoke(Id);

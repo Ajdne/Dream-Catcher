@@ -47,10 +47,10 @@ public class MainMenuManager : MonoBehaviour
     #region PlayerStats
     public void UpdatePlayerStats()
     {
-        TotalSheepText.text = "Total Sheep Count: " + GM.TotalSheep.ToString();
-        MostSheepText.text = "Most Sheep Collecetd: " + GM.MostSheepCollected.ToString();
-        TotalDreamsText.text = "Total Dream Count: " + GM.TotalDreams.ToString();
-        ObstaclesHitText.text = "Obstacle Hit Count: " + GM.ObstaclesHit.ToString();
+        TotalSheepText.text = "Total Sheep: " + GM.TotalSheep.ToString();
+        MostSheepText.text = "Max Sheep: " + GM.MostSheepCollected.ToString();
+        TotalDreamsText.text = "Total Dreams: " + GM.TotalDreams.ToString();
+        ObstaclesHitText.text = "Obstacles Hit: " + GM.ObstaclesHit.ToString();
 
         int hours, minutes, seconds;
 
@@ -61,7 +61,7 @@ public class MainMenuManager : MonoBehaviour
 
         minutes = (GM.LongestDream % 360) / 60;
         seconds = (GM.LongestDream % 360) % 60;
-        LongestDreamText.text = "Longest Dream Time: \n" + minutes + "m " + seconds + "s";
+        LongestDreamText.text = "Longest Dream: \n" + minutes + "m " + seconds + "s";
     }
     #endregion
 

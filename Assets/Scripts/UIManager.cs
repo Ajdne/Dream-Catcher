@@ -95,24 +95,24 @@ public class UIManager : MonoBehaviour
     {
         Color heartColor = Heart1.color;
         int playerHealth = Player.Instance.Health;
-
-        if (playerHealth >= 1 && playerHealth <= 3)
+        switch (playerHealth)
         {
-            heartColor.a = 1f;
-            Heart2.color = heartColor;
-            Heart3.color = heartColor;
-
-            if (playerHealth == 2)
-            {
-                heartColor.a = 0.5f;
-                Heart3.color = heartColor;
-            }
-            else if (playerHealth == 1)
-            {
+            case 3:
+                heartColor.a = 1f;
                 Heart2.color = heartColor;
+                Heart3.color = heartColor;
+                break;
+            case 2:
                 heartColor.a = 0.5f;
                 Heart3.color = heartColor;
-            }
+                heartColor.a = 1f;
+                Heart2.color = heartColor;
+                break;
+            case 1:
+                heartColor.a = 0.5f;
+                Heart2.color = heartColor;
+                Heart3.color = heartColor;
+                break;
         }
     }
     private void ScoreController()

@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 199915477566414660}
   - component: {fileID: 114202090743032824}
   m_Layer: 0
-  m_Name: CFXM3_Skull_Explosion (direct)
+  m_Name: skelletons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

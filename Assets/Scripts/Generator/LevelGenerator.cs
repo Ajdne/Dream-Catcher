@@ -68,7 +68,7 @@ public class LevelGenerator : MonoBehaviour
         Time.timeScale = 1.0f;
         IsAlive = true;
         spawn = false;
-        gameSpeed = 13;
+        gameSpeed = 14;
         GameTime = 0;
         EventManager.StartEnvironmentTransformEvent(1);
         StartCoroutine(GameSpeedUpdate());
