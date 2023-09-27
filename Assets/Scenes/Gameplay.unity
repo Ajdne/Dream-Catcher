@@ -3916,19 +3916,25 @@ MonoBehaviour:
   - {fileID: 7759713516053243368, guid: 636add88a64b98b43a5bb3509fb05209, type: 3}
   - {fileID: 7759713516053243368, guid: 636add88a64b98b43a5bb3509fb05209, type: 3}
   - {fileID: 1317464205097914919, guid: 1893cebec7e70894e85f3a7b866d3033, type: 3}
-  - {fileID: 6243528946387359886, guid: 5a279b7cfa59ff44cbd3e400b1375835, type: 3}
-  - {fileID: 6243528946387359886, guid: 92e8e0c172d4f9242b2a656e14a6c08b, type: 3}
   - {fileID: 1317464205097914919, guid: 8c9cf9b6e98741e46b18fecea00cb626, type: 3}
   - {fileID: 1317464205097914919, guid: b897587f5d952a2418d62fb722b401cf, type: 3}
+  - {fileID: 6243528946387359886, guid: 5a279b7cfa59ff44cbd3e400b1375835, type: 3}
+  - {fileID: 6243528946387359886, guid: 92e8e0c172d4f9242b2a656e14a6c08b, type: 3}
+  - {fileID: 6243528946387359886, guid: c2a769a52bd72e14ba148c5332ccffba, type: 3}
+  - {fileID: 6243528946387359886, guid: f15063fd6e776ad44bd399c73c271077, type: 3}
+  - {fileID: 6243528946387359886, guid: 8a318cb3ceb87224886b3f59dbf9e121, type: 3}
   spawnProbabilities:
   - 0.1
   - 0.1
   - 0.1
   - 0.48
-  - 0.1
-  - 0.09
   - 0.01
   - 0.02
+  - 0.04
+  - 0.03
+  - 0.04
+  - 0.04
+  - 0.04
   EnvironmentPlatforms:
   - {fileID: 5200834912308466919, guid: 8a20450613920844ea6b22d700d90a04, type: 3}
   - {fileID: 5027538762012796069, guid: fd76680e3eede504ca1285f46b972812, type: 3}

@@ -47,15 +47,31 @@ public class LevelGenerator : MonoBehaviour
     }
     private int GetEnvironment()
    {
-        return GameEnvironment switch
+        if(gameSpeed <= 40f)
         {
-            6 => Random.Range(0, 3),//town (jos uvek nije implementiran)
-            5 => Random.Range(12, 15),//shroom
-            4 => Random.Range(9, 12),//sea
-            3 => Random.Range(6, 9),//polar
-            2 => Random.Range(3, 6),//desert
-            _ => Random.Range(0, 3),//countryside
-        };
+            return GameEnvironment switch
+            {
+                5 => Random.Range(12, 15),//shroom
+                4 => Random.Range(9, 12),//sea
+                3 => Random.Range(6, 9),//polar
+                2 => Random.Range(3, 6),//desert
+                _ => Random.Range(0, 3),//countryside
+            };
+        }
+        else if(gameSpeed > 40f && gameSpeed <= 65f)
+        {
+            return GameEnvironment switch
+            {
+                5 => Random.Range(11, 15),//shroom
+                4 => Random.Range(9, 13),//sea
+                3 => Random.Range(6, 10),//polar
+                2 => Random.Range(3, 7),//desert
+                _ => Random.Range(0, 4),//countryside
+            };
+        }else
+        {
+            return Random.Range(0, 15);
+        }
     }
     private void Awake()
     {
@@ -119,10 +135,12 @@ public class LevelGenerator : MonoBehaviour
     }
     private void PlayerDeath()
     {
+        gameSpeed = 0;
+
         gameObject.GetComponent<BoxCollider>().enabled = false;
         IsAlive = false;
         spawn = false;
-        gameSpeed = 0f;
+        gameSpeed = 14f;
     }
     
     private void OnEnable()
@@ -169,7 +187,6 @@ public class LevelGenerator : MonoBehaviour
                 EventManager.StartSpeedUpMusicEvent();
                 gameSpeed += speedIncrement2;
             }
-
             GameTime += 1;
         }
     }
