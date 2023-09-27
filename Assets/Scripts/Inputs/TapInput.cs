@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
@@ -6,16 +7,14 @@ using UnityEngine;
 public class TapInput : MonoBehaviour
 {
     //https://www.youtube.com/watch?v=C9qoYdslLcg
+    public static TapInput Instance;
     public static float LANE_DISTANCE = 2.0f;
-    private CharacterController characterController;
+    [SerializeField] private GameObject _Player;
     private int desiredLane = 1; //0 = left, 1 = middle, 2= right
-    private float speed = 7.0f;
-
-    void Start()
+    private void Awake()
     {
-        characterController = GetComponent<CharacterController>();
+        Instance = this;
     }
-    
     void Update()
     {
 
@@ -27,13 +26,8 @@ public class TapInput : MonoBehaviour
             targetPosition += Vector3.right * LANE_DISTANCE;
 
         // calculate move delta
-        Vector3 moveVector = Vector3.zero;
-            //moveVector.x = (targetPosition - transform.position).normalized.x * speed;
-        moveVector.x = (targetPosition - transform.position).x * speed;
-        moveVector.y = 0;
-        moveVector.z = 0;
-        //move player
-        characterController.Move(moveVector * Time.deltaTime);
+        float moveVector = LevelGenerator.gameSpeed * Time.deltaTime * 0.5f;
+        _Player.transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveVector);
     }
     private void MoveLane(bool goingRight)
     {

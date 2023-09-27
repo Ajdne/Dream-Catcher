@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
     }
     private void ObstacleHit()
     {
-
+        EventManager.StartSFXEvent("Hit");
         Skulls.gameObject.SetActive(true);
         if(Health >= 1)
         {
@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
     }
     private void SheepCollect(int Id)
     {
+        EventManager.StartSFXEvent("Sheep");
         if (Id == 1) // White sheep
         {
             Score++;
@@ -62,6 +63,7 @@ public class Player : MonoBehaviour
         {
             if (Health <= 2)
             {
+                EventManager.StartSFXEvent("HealthUp");
                 Health++;
             }
             Score++;
@@ -71,9 +73,11 @@ public class Player : MonoBehaviour
             Score++;
             if (MultiplierCounter <= 2)
             {
+                EventManager.StartSFXEvent("SpeedUp");
                 LevelGenerator.gameSpeed *= 1.3f;
                 MultiplierCounter++;
             }
+            Score++;
         }
         EventManager.StartUpdateGUI();
     }
@@ -85,6 +89,7 @@ public class Player : MonoBehaviour
     }
     private void TransformPlayer(int Id)
     {
+        EventManager.StartSFXEvent("Transform");
         // Deactivate all objects first
         krevet.SetActive(false);
         krevetBrod.SetActive(false);

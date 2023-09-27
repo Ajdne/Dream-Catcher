@@ -14,6 +14,11 @@ public class EventManager : MonoBehaviour
     public static event Action<int> TransformPlayer;
     public static event Action<string> SFXEvent;
     public static event Action<string> MusicEvent;
+    public static event Action SpeedUpMusicEvent;
+    public static void StartSpeedUpMusicEvent()
+    {
+        SpeedUpMusicEvent?.Invoke();
+    }
     public static void StartSFXEvent(string eventName)
     {
         SFXEvent?.Invoke(eventName);

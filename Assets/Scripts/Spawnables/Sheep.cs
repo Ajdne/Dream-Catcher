@@ -6,6 +6,8 @@ using UnityEngine;
 public class Sheep : MonoBehaviour
 {
     [SerializeField]
+    private GameObject Smoke;
+    [SerializeField]
     private GameObject Land;
     [SerializeField]
     private GameObject Water;
@@ -38,10 +40,6 @@ public class Sheep : MonoBehaviour
                 break;
         }
     }
-    private void OnDisable()
-    {
-        ClearSheep();
-    }
     private void ClearSheep()
     {
         Water.SetActive(false);
@@ -67,8 +65,15 @@ public class Sheep : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            ClearSheep();
+            Smoke.SetActive(true);
             EventManager.StartSheep(Id);
-            ObjectPoolManager.ReturnObject(gameObject);
+            StartCoroutine(Return());
         }
+    }
+    IEnumerator Return()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        ObjectPoolManager.ReturnObject(gameObject);
     }
 }

@@ -70,6 +70,7 @@ public class LevelGenerator : MonoBehaviour
         spawn = false;
         gameSpeed = 14;
         GameTime = 0;
+        EventManager.StartMusicEvent("Background");
         EventManager.StartEnvironmentTransformEvent(1);
         StartCoroutine(GameSpeedUpdate());
     }
@@ -150,10 +151,10 @@ public class LevelGenerator : MonoBehaviour
         SpawnStartPlatform();
     }
     private const float maxGameSpeed = 100f;
-    private const float halfGameSpeed = 70f;
+    private const float halfGameSpeed = 60f;
     private const float speedIncrement = 0.2f;
     private const float speedIncrement2 = 0.1f;
-    private const float updateInterval = 1f;
+    private const int updateInterval = 1;
     IEnumerator GameSpeedUpdate()
     {
         while (IsAlive)
@@ -165,6 +166,7 @@ public class LevelGenerator : MonoBehaviour
                 gameSpeed += speedIncrement;
             }else if(gameSpeed < maxGameSpeed)
             {
+                EventManager.StartSpeedUpMusicEvent();
                 gameSpeed += speedIncrement2;
             }
 

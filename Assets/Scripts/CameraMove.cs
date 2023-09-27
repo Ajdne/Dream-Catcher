@@ -27,7 +27,8 @@ public class CameraMove : MonoBehaviour
         }
         else if (target.CompareTag("Achievements"))
         {
-            transform.DOMove(new Vector3(3.87f, 1.71f, -5.44f), duration);
+
+            transform.DOMove(new Vector3(3.86f, 1.18f, -5.44f), duration);
             transform.DORotate(new Vector3(90f, 0, 0), duration);
         }
     }
