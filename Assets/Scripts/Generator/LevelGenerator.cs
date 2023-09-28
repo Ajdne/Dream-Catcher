@@ -84,7 +84,7 @@ public class LevelGenerator : MonoBehaviour
         Time.timeScale = 1.0f;
         IsAlive = true;
         spawn = false;
-        gameSpeed = 14;
+        gameSpeed = 14f;
         GameTime = 0;
         EventManager.StartMusicEvent("Background");
         EventManager.StartEnvironmentTransformEvent(1);
@@ -136,11 +136,9 @@ public class LevelGenerator : MonoBehaviour
     private void PlayerDeath()
     {
         gameSpeed = 0;
-
         gameObject.GetComponent<BoxCollider>().enabled = false;
         IsAlive = false;
         spawn = false;
-        gameSpeed = 14f;
     }
     
     private void OnEnable()

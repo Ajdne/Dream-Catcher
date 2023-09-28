@@ -79,10 +79,4 @@ public class Achievement : MonoBehaviour
                 break;
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

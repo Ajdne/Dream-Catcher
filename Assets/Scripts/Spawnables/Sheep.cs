@@ -25,6 +25,10 @@ public class Sheep : MonoBehaviour
     {
         TransformSheep();
     }
+    private void OnDisable()
+    {
+        ClearSheep();
+    }
     private void TransformSheep()
     {
         switch (LevelGenerator.GameEnvironment)
@@ -73,7 +77,7 @@ public class Sheep : MonoBehaviour
     }
     IEnumerator Return()
     {
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.3f);
         ObjectPoolManager.ReturnObject(gameObject);
     }
 }
