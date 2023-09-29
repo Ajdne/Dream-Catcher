@@ -47,7 +47,7 @@ public class LevelGenerator : MonoBehaviour
     }
     private int GetEnvironment()
    {
-        if(gameSpeed <= 40f)
+        if(gameSpeed <= 30f)
         {
             return GameEnvironment switch
             {
@@ -58,7 +58,7 @@ public class LevelGenerator : MonoBehaviour
                 _ => Random.Range(0, 3),//countryside
             };
         }
-        else if(gameSpeed > 40f && gameSpeed <= 65f)
+        else if(gameSpeed > 30f && gameSpeed <= 70f)
         {
             return GameEnvironment switch
             {
@@ -103,12 +103,6 @@ public class LevelGenerator : MonoBehaviour
 
             platform.GetComponent<EnvironmentMover>().enabled = true;
             platform.GetComponent<BoxCollider>().enabled = true;
-            if (EnvironmentCounter == EnvironmentCounterLimit) //ukljucuje capsule colider na platformi i gasi corutinu
-            {
-                EnvironmentCounter = 0;
-                platform.transform.Find("Trigger2").gameObject.SetActive(true);
-                platform.GetComponent<BoxCollider>().enabled = false;
-            }
             spawn = false;
         }
     }
@@ -118,14 +112,22 @@ public class LevelGenerator : MonoBehaviour
         {
         new Vector3(0, -200, 0),
         new Vector3(0, -200, 150),
-        new Vector3(0, -200, 450),
-        new Vector3(0, -200, 300)
+        new Vector3(0, -200, 300),
+        new Vector3(0, -200, 450)
         };
         for (int i = 0; i < pozicije.Length; i++)
         {
             int rand = GetEnvironment();
             GameObject platform = ObjectPoolManager.SpawnObject(EnvironmentPlatforms[rand], pozicije[i], Quaternion.identity);
             platform.GetComponent<EnvironmentMoverUp>().enabled = true;
+            if (i <= 2)
+            {
+                platform.GetComponent<BoxCollider>().enabled = false;
+            }
+            else
+            {
+                platform.GetComponent<BoxCollider>().enabled = true;
+            }
             if (i == 0)
             {
                 platform.transform.Find("Trigger1").gameObject.SetActive(true);
@@ -152,11 +154,22 @@ public class LevelGenerator : MonoBehaviour
         EventManager.PlayerDeath -= PlayerDeath;
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider platform)
     {
-        if (other.CompareTag("Environment"))
+        if (platform.CompareTag("Environment"))
         {
-            spawn = true;
+            if (EnvironmentCounter == EnvironmentCounterLimit) //ukljucuje capsule colider na platformi i gasi corutinu
+            {
+                EnvironmentCounter = 0;
+                platform.transform.Find("Trigger2").gameObject.SetActive(true);
+                platform.GetComponent<BoxCollider>().enabled = true;
+                spawn = false;
+            }
+            else
+            {
+                platform.GetComponent<BoxCollider>().enabled = false;
+                spawn = true;
+            }
         }
     }
     // slusa transformers event

@@ -358,9 +358,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2092194121829144142}
   - component: {fileID: 4732860898133068941}
-  - component: {fileID: 8644399792858147993}
   - component: {fileID: 347586048918905545}
   - component: {fileID: 8831524445632831867}
+  - component: {fileID: 5258628775569722450}
   m_Layer: 0
   m_Name: Countryside1
   m_TagString: Environment
@@ -400,27 +400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0912297fae1e36c48a728f79edea6467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &8644399792858147993
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5027538762012796069}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 10, y: 50, z: 146}
-  m_Center: {x: 10, y: 0, z: 60}
 --- !u!114 &347586048918905545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,6 +425,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Points: {fileID: 3362205572261634868}
+--- !u!65 &5258628775569722450
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5027538762012796069}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 50, z: 8.721924}
+  m_Center: {x: 10, y: 0, z: 127.86322}
 --- !u!1 &6120792145972012514
 GameObject:
   m_ObjectHideFlags: 0
